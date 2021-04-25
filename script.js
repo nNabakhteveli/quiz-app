@@ -94,9 +94,8 @@ function loadQuestions() {
         }
 
         if(this.status == 200) {
-           let response = JSON.parse(this.responseText);
-           console.log(response);
-            // getRandomQuestion(response);
+           let response = JSON.parse(this.responseText).results;
+            getRandomQuestion(response);
 
            
         }
