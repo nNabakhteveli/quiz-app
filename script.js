@@ -68,7 +68,7 @@ function categories() {
             for(let item = 0; item < arr.length; item++) {
                 let itemsArray = arr[item].trivia_categories;
 
-                for(i in itemsArray) {
+                for(let i in itemsArray) {
                     options += `<option value=${itemsArray[i].name} id_of_category='${itemsArray[i].id}'>${itemsArray[i].name}</option>`;
                 }
                 // console.log(itemsArray);
@@ -82,6 +82,63 @@ function categories() {
 categories();
 
 
+
+let do_not_repeat_number = () => {
+    let arr = [];    
+    for(let i = 0; i < 3; i++) {
+        let randomNumber = Math.floor(Math.random() * 3);
+        arr.push(randomNumber);    
+    }
+    
+    for(let j = 0; j < arr.length; j++) {
+        if(arr[j] === arr[j + 1] || arr[j] === arr[j + 2]) {
+            let repeatingNumber = arr.indexOf(arr[j]);
+            arr.splice(repeatingNumber, 1);
+        }
+    }
+    
+    // Calculating number that's missing in the array
+    /* Logic behind this:
+        Let's say, we have an array - [a, b];
+        There are three possible ways that the number can be modified in the array,
+        because latest for loop removes one amongst the number, if there are identical ones.
+        
+        if a = 0, b = 1
+        [0 + 1] = 1, so it's missing the number 2
+
+        if a = 1, b = 2
+        [1 + 2] = 3, so it's missing the number 0
+
+        if a = 2, b = 0
+        [2 + 0] = 2, so it's missing the number 1
+    
+    */ 
+
+
+    if(arr[0] + arr[1] == 1) {
+        arr.push(2);
+    } else if(arr[0] + arr[1] == 2) {
+        arr.push(1);
+    } else if(arr[0] + arr[1] == 3) {
+        arr.push(0);
+    }
+
+    if(arr.length == 4){
+        arr.pop();
+    }
+
+    return arr;
+}
+
+document.getElementById('click').addEventListener('click', do_not_repeat_number);
+
+
+let question_text = document.getElementById('question-text');
+let button1 = document.getElementById('answer1');
+let button2 = document.getElementById('answer2');
+let button3 = document.getElementById('answer3');
+let button4 = document.getElementById('answer4');
+
 function loadQuestions() {
     const xhr = new XMLHttpRequest();
     const URL = 'https://opentdb.com/api.php?amount=10';
@@ -89,15 +146,25 @@ function loadQuestions() {
 
     xhr.onload = function () {
         let getRandomQuestion = (responseArr) => {
-            let randomNum = Math.floor(Math.random() * responseArr.length - 1);
-            console.log(responseArr[randomNum]);
+            let randomNum = Math.floor(Math.random() * responseArr.length);
+            let random_question = responseArr[randomNum];
+
+            question_text.innerHTML = random_question.question;
+
+            // Correct answer
+            button1.innerHTML = random_question.correct_answer;
+
+            // Incorrect answers
+            button2.innerHTML = random_question.incorrect_answers[0];
+            button3.innerHTML = random_question.incorrect_answers[1];
+            button4.innerHTML = random_question.incorrect_answers[2];
+            console.log(random_question);
         }
 
         if(this.status == 200) {
            let response = JSON.parse(this.responseText).results;
-            getRandomQuestion(response);
 
-           
+           getRandomQuestion(response);
         }
     }
     xhr.send();
@@ -107,4 +174,4 @@ function loadQuestions() {
 loadQuestions();
 
 
-// document.getElementById('getquestionsButton').addEventListener('click', loadQuestion);
+document.getElementById('getquestionsButton').addEventListener('click', loadQuestion);
