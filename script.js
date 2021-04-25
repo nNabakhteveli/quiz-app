@@ -20,24 +20,32 @@ function loadQuestion() {
 }
 
 
+let questCategory = document.getElementById('question-category');
 function categories() {
 
-    let get_number_of_questions = (categoryID) => {
-        const URL = `https://opentdb.com/api_count.php?category=${categoryID}`;
-        let xhr = new XMLHttpRequest();
-        xhr.open('GET', URL, true);
+    // let get_number_of_questions = (categoryID) => {
+    //     const URL = `https://opentdb.com/api_count.php?category=${categoryID}`;
+    //     let xhr = new XMLHttpRequest();
+    //     xhr.open('GET', URL, true);
 
-        xhr.onload = function() {
-            if(this.status == 200) {
-                let response = JSON.parse(this.responseText);
+    //     xhr.onload = function() {
+    //         if(this.status == 200) {
+    //             let response = JSON.parse(this.responseText);
 
-                if(categoryID === response.category_id) {
-                    return this.response.total_question_count;
-                }
-            }
-        }
-        xhr.send();
-    }
+    //             let searchID = () => {
+    //                 let arr = [];
+    //                 for(let i = 0; i < response.length; i++) {
+    //                     arr.push(response[i]);
+    //                 }
+    //             }
+
+    //             if(categoryID === searchID) {
+    //                 return this.response.total_question_count;
+    //             }
+    //         }
+    //     }
+    //     xhr.send();
+    // }
 
 
 
@@ -47,7 +55,7 @@ function categories() {
 
     xhr.open('GET', URL, true);
 
-    let difficulty = document.getElementById('difficulty');
+
     xhr.onload = function() {
         if(this.status == 200) {
             let choose_difficulty = JSON.parse(this.responseText);
@@ -61,14 +69,43 @@ function categories() {
                 let itemsArray = arr[item].trivia_categories;
 
                 for(i in itemsArray) {
-                    options += `<option>${itemsArray[i].name} - Total ${get_number_of_questions(itemsArray[i].id)} questions</option>`;
+                    options += `<option value=${itemsArray[i].name} id_of_category='${itemsArray[i].id}'>${itemsArray[i].name}</option>`;
                 }
-                console.log(itemsArray);
+                // console.log(itemsArray);
             }
-            difficulty.innerHTML = options;
+            questCategory.innerHTML = options;
         }
     }
     xhr.send();
 }
 
 categories();
+
+
+function loadQuestions() {
+    const xhr = new XMLHttpRequest();
+    const URL = 'https://opentdb.com/api.php?amount=10';
+    xhr.open('GET', URL, true);
+
+    xhr.onload = function () {
+        let getRandomQuestion = (responseArr) => {
+            let randomNum = Math.floor(Math.random() * responseArr.length - 1);
+            console.log(responseArr[randomNum]);
+        }
+
+        if(this.status == 200) {
+           let response = JSON.parse(this.responseText);
+           console.log(response);
+            // getRandomQuestion(response);
+
+           
+        }
+    }
+    xhr.send();
+}
+
+
+loadQuestions();
+
+
+// document.getElementById('getquestionsButton').addEventListener('click', loadQuestion);

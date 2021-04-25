@@ -12,18 +12,36 @@
 <button id='button'>Get info</button>    
 
     <div id="container">
-        <div>
-            <label for="a">Question Category</label>
-            <select name="category" id="">
-                <option >Easy</option>
-                <option value="">Medium</option>
-                <option value="">Hard</option>
-            </select>
-        </div>
-
-        <label for="a">Difficulty</label>
-        <select name="" id="difficulty">Difficulty</select>
+        <form action="./script.js">
+            <div>
+                <label for="difficulty">Difficulty</label>
+                <select name="category" id="selectDiff">
+                    <option value='easy'>Easy</option>
+                    <option value="medium" default selected value>Medium</option>
+                    <option value="hard">Hard</option>
+                </select>
+            </div>
+    
+            <label for="category">Question Category</label>
+            <select name="difficulty" id="question-category" id_of_category=''></select>
+        </form>
+        
     </div>
+
+    <button id='getquestionsButton'>Get Questions</button>
+
+    <div>
+        <h2 id="question"></h2>
+        <p id="p"></p>
+
+        <div>
+            <button id="answer1">Option1</button>
+            <button id="answer2">Option2</button>
+            <button id="answer3">Option3</button>
+            <button id="answer4">Option4</button>
+        </div>
+    </div>
+
 
 <script src="./script.js"></script>
 </body>
