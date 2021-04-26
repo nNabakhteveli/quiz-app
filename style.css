@@ -37,24 +37,44 @@ html {
     text-align: center;
     margin: 20px;
     visibility: hidden;
-    width: fit-content;
+    width: auto;
     height: fit-content;
 }
 
 #question-text {
+    margin-left: 380px;
+    position: fixed;
     font-size: 2rem;
-    margin-top: 100px;
+    margin-top: 30px;
+    width: 550px;
+}
+
+#gameProgress {
+    font-size: 1.2rem;
+    font-family: 'Orienta', sans-serif;
+    position: relative;
+    top: -45px;
+    left: 600px;
 }
 
 #points {
     font-size: 1.2rem;
     font-family: 'Orienta', sans-serif;
-    position: relative;
-    left: 600px;
+    margin-left: -1150px;
 }
 
 #answer-buttons-div {
     margin-top: 200px;
+    padding: 5px;
+}
+
+#answer1, #answer2, #answer3, #answer4 {
+    background: #d7d9d7;
+    font-size: 1.25rem;
+    padding: 10px;
+    border: white;
+    border-radius: 10px;
+    cursor: pointer;
 }
 
 .first-two-button {
@@ -68,6 +88,7 @@ html {
     border: none;
     font-size: 1.1rem;
     padding: 10px;
+    cursor: pointer;
 }
 
 
@@ -76,4 +97,5 @@ html {
     left: 600px;
     top: -20px;
     font-size: 1.25rem;
+    cursor: pointer;
 }
