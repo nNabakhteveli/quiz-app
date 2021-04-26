@@ -4,6 +4,7 @@
 html {
     background: #2B696D;
     position: relative;
+    width: fit-content;
 }
 
 .text {
@@ -95,7 +96,32 @@ html {
 #click {
     position: relative;
     left: 600px;
-    top: -20px;
+    top: 500px;
+    font-size: 1.25rem;
+    cursor: pointer;
+}
+
+#endgame-div {
+    font-size: 2rem;
+    visibility: visible;
+}
+
+#player-info {
+    color: white;
+    font-family: 'Orienta', sans-serif;
+    text-align: center;
+    font-size: 2rem;    
+    position: relative;
+    left: 0px;
+    top: -500px;
+    cursor: pointer;
+}
+
+#play-again-button {
+    visibility: hidden;
+    position: relative;
+    top: -250px;
+    left: 603px;
     font-size: 1.25rem;
     cursor: pointer;
 }

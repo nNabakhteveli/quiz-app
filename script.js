@@ -1,5 +1,6 @@
 let questCategory = document.getElementById('question-category');
-// Fetching categories from server to put in the <select /> tag
+
+// Fetching categories from the api to put in the <select /> tag
 function categories() {
     const URL = 'https://opentdb.com/api_category.php';
     let xhr = new XMLHttpRequest();
@@ -87,11 +88,6 @@ let do_not_repeat_number = () => {
 
 do_not_repeat_number();
 
-// GAME END <---------------------------------------------------------------------
-function endGame() {
-    console.log('Game ended!');
-}
-
 
 const quiz_container = document.getElementById('quiz-container');
 const input_container = document.getElementById('input-container');
@@ -102,22 +98,34 @@ let button3 = document.getElementById('answer3');
 let button4 = document.getElementById('answer4');
 
 
+function endGame() {
+    quiz_container.style.visibility = 'hidden';
+    question_text.style.visibility = 'hidden';
+    document.getElementById('endgame-div').style.visibility = 'visible';
+    document.getElementById('play-again-button').style.visibility = 'visible';
+    document.getElementById('player-info').innerHTML = `Your score is - ${playerScore}!
+Want to play again?`;
+}
+
+
 let progress = 0;
-let playerPoint = 0;
+let playerScore = 0;
 function styleHTML() {
     quiz_container.style.visibility = 'visible';
     question_text.style.visibility = 'visible';
     input_container.style.visibility = 'hidden';
+    document.getElementById('endgame-div').style.visibility = 'hidden';
+    document.getElementById('play-again-button').style.visibility = 'hidden';
     document.getElementById('click').style.visibility = 'hidden';
     document.getElementById('hello_text').style.visibility = 'hidden';
 
     document.getElementById('gameProgress').innerHTML = `${progress} / 10`;
 
-    if(progress === 10) {
+    if(progress >= 10) {
         endGame();
     }
 
-    document.getElementById('points').innerHTML = `Your Points - ${playerPoint}`;
+    document.getElementById('points').innerHTML = `Your Points - ${playerScore}`;
 }
     
 // Styling the button. This is the worst way I could do, but it's okay for now
@@ -270,14 +278,13 @@ function loadQuestions() {
             console.log(randomPosForIncorrectAnswers[2]);
             console.log(random_question);
 
-            let buttonsDIV = document.getElementById('answer-buttons-div');
 
             let isRightOrNot = () => {
                 button1.onclick = () => {
                     if(button1.firstChild.data === random_question.correct_answer) {
-                        playerPoint += 10;
+                        playerScore += 10;
                         styleRightAnswerForButton1();
-                        console.log("That's right");
+                        console.log("That's right!");
                     } else {
                         styleWrongAnswerForButton1();
                         console.log("Wrong answer buddy"); 
@@ -287,11 +294,35 @@ function loadQuestions() {
 
                 button2.onclick = () => {
                     if(button2.firstChild.data === random_question.correct_answer) {
-                        playerPoint += 10;
+                        playerScore += 10;
                         styleRightAnswerForButton2();
-                        console.log("That's right");
+                        console.log("That's right!");
                     } else {
                         styleWrongAnswerForButton2();
+                        console.log("Wrong answer buddy"); 
+                    }
+                    progress += 1;
+                }
+
+                button3.onclick = () => {
+                    if(button3.firstChild.data === random_question.correct_answer) {
+                        playerScore += 10;
+                        styleRightAnswerForButton3();
+                        console.log("That's right!");
+                    } else {
+                        styleWrongAnswerForButton3();
+                        console.log("Wrong answer buddy"); 
+                    }
+                    progress += 1;
+                }
+
+                button4.onclick = () => {
+                    if(button4.firstChild.data === random_question.correct_answer) {
+                        playerScore += 10;
+                        styleRightAnswerForButton4();
+                        console.log("That's right!");
+                    } else {
+                        styleWrongAnswerForButton4();
                         console.log("Wrong answer buddy"); 
                     }
                     progress += 1;
@@ -304,16 +335,27 @@ function loadQuestions() {
            let response = JSON.parse(this.responseText).results;
            getRandomQuestion(response);
         }
+
+        /* After user will click on the button, button will become green if answer is right, 
+        red if answer is wrong. Then, when new question will be generated, buttons will need to
+        return to normal colors, so this functions below will handle that */
+
         unstyleRightAnswerForButton1();
         unstyleRightAnswerForButton2();
         unstyleRightAnswerForButton3();
         unstyleRightAnswerForButton4();
+
     }
     xhr.send();
 }
 
 document.getElementById('click').addEventListener('click', loadQuestions);
 document.getElementById('next_question').addEventListener('click', loadQuestions);
+document.getElementById('play-again-button').addEventListener('click', () => {
+    styleHTML();
+    loadQuestions();
+});
+
 
 
     // Modifying custom URL. Will finish later 

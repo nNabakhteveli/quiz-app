@@ -32,27 +32,33 @@ get high points!</pre>
         </form>
     </div>
 
+    <button id="click">Start Game!</button>
 
     <div id="quiz-container">
-        <p id='points'>Your Points - 0</p>
+        <p id='points'>Your Points - x</p>
         <p id="gameProgress">x / 10</p>
         <p id="question-text"></p>
 
-            <div id="answer-buttons-div">
-                <div class="first-two-button">
-                    <button id="answer1">Option1</button>
-                    <button id="answer2">Option2</button>
-                </div>
-                <div class="second-two-button">
-                    <button id="answer3">Option3</button>
-                    <button id="answer4">Option4</button>
-                </div>
+        <div id="answer-buttons-div">
+            <div class="first-two-button">
+                <button id="answer1">Option1</button>
+                <button id="answer2">Option2</button>
             </div>
-            <button id="next_question" onclick="loadQuestions()">Next Question</button>
+                
+            <div class="second-two-button">
+                <button id="answer3">Option3</button>
+                <button id="answer4">Option4</button>
+            </div>
         </div>
 
-    <button id="click">Start Game!</button>
+        <button id="next_question" onclick="loadQuestions()">Next Question</button>
+    </div>
 
-    <script src="./script.js"></script>
+    <div id="endgame-div">
+        <pre id='player-info'></pre>
+        <button id='play-again-button' onclick="loadQuestions()">Play again!</button>
+    </div>
+
+<script src="./script.js"></script>
 </body>
 </html>
