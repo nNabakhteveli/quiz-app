@@ -1,26 +1,5 @@
-const URL = 'https://opentdb.com/api.php?amount=10';
-
-
-document.getElementById('button').addEventListener('click', loadQuestion);
-
-
-function loadQuestion() {
-    let xhr = new XMLHttpRequest();
-    
-    xhr.open('GET', URL, true);
-    
-    xhr.onload = function () {
-        if(this.status == 200) {
-            let response = JSON.parse(this.responseText);
-            console.log(response);
-        }
-    }
-
-    xhr.send();
-}
-
-
 let questCategory = document.getElementById('question-category');
+
 function categories() {
 
     // let get_number_of_questions = (categoryID) => {
@@ -68,6 +47,7 @@ function categories() {
             for(let item = 0; item < arr.length; item++) {
                 let itemsArray = arr[item].trivia_categories;
 
+                options += '<option value="selected value" disabled default selected value>Choose Category</option>';
                 for(let i in itemsArray) {
                     options += `<option value=${itemsArray[i].name} id_of_category='${itemsArray[i].id}'>${itemsArray[i].name}</option>`;
                 }
@@ -130,18 +110,35 @@ let do_not_repeat_number = () => {
     return arr;
 }
 
-document.getElementById('click').addEventListener('click', do_not_repeat_number);
+
+do_not_repeat_number();
 
 
+const quiz_container = document.getElementById('quiz-container');
+const input_container = document.getElementById('input-container');
 let question_text = document.getElementById('question-text');
 let button1 = document.getElementById('answer1');
 let button2 = document.getElementById('answer2');
 let button3 = document.getElementById('answer3');
 let button4 = document.getElementById('answer4');
 
+
+let point = 0;
+function styleHTML() {
+    quiz_container.style.visibility = 'visible';
+    question_text.style.visibility = 'visible';
+    input_container.style.visibility = 'hidden';
+    document.getElementById('click').style.visibility = 'hidden';
+    document.getElementById('hello_text').style.visibility = 'hidden';
+
+    let points = document.getElementById('points');
+    points.innerHTML = `${point} / 10`;
+}
+
 function loadQuestions() {
+    styleHTML();
     const xhr = new XMLHttpRequest();
-    const URL = 'https://opentdb.com/api.php?amount=10';
+    const URL = 'https://opentdb.com/api.php?amount=10&type=multiple';
     xhr.open('GET', URL, true);
 
     xhr.onload = function () {
@@ -155,23 +152,19 @@ function loadQuestions() {
             button1.innerHTML = random_question.correct_answer;
 
             // Incorrect answers
-            button2.innerHTML = random_question.incorrect_answers[0];
-            button3.innerHTML = random_question.incorrect_answers[1];
-            button4.innerHTML = random_question.incorrect_answers[2];
+            let randomPosForIncorrectAnswers = do_not_repeat_number();
+            button2.innerHTML = random_question.incorrect_answers[randomPosForIncorrectAnswers[0]];
+            button3.innerHTML = random_question.incorrect_answers[randomPosForIncorrectAnswers[1]];
+            button4.innerHTML = random_question.incorrect_answers[randomPosForIncorrectAnswers[2]];
             console.log(random_question);
         }
 
         if(this.status == 200) {
            let response = JSON.parse(this.responseText).results;
-
            getRandomQuestion(response);
         }
     }
     xhr.send();
 }
 
-
-loadQuestions();
-
-
-document.getElementById('getquestionsButton').addEventListener('click', loadQuestion);
+document.getElementById('click').addEventListener('click', loadQuestions);

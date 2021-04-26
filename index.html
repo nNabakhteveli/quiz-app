@@ -9,39 +9,48 @@
     <title>Quiz Application</title>
 </head>
 <body>
-<button id='button'>Get info</button>    
 
-    <div id="container">
-        <form action="./script.js">
-            <div>
-                <label for="difficulty">Difficulty</label>
-                <select name="category" id="selectDiff">
+
+    <pre class="text" id='hello_text'>Play this quiz and test your knowledge! 
+Challenge yourself to answer all the questions right and 
+get high points!</pre>
+
+    <div id="input-container">
+        <form>
+            <div class="difficulty-div">
+                <select name="category" id="selectDiff" required>
+                    <option value="selected value" disabled default selected value>Choose Difficulty</option>
                     <option value='easy'>Easy</option>
-                    <option value="medium" default selected value>Medium</option>
+                    <option value="medium">Medium</option>
                     <option value="hard">Hard</option>
                 </select>
             </div>
-    
-            <label for="category">Question Category</label>
-            <select name="difficulty" id="question-category" id_of_category=''></select>
+
+            <div class="category-options">
+                <select name="difficulty" id="question-category"></select>
+            </div>
         </form>
-        
     </div>
 
-    <button id='getquestionsButton'>Get Questions</button>
 
-    <div>
-        <h2 id="question-text"></h2>
+    <div id="quiz-container">
+        <p id="points">x / 10</p>
+            <p id="question-text"></p>
 
-        <div>
-            <button id="answer1">Option1</button>
-            <button id="answer2">Option2</button>
-            <button id="answer3">Option3</button>
-            <button id="answer4">Option4</button>
+            <div id="answer-buttons-div">
+                <div class="first-two-button">
+                    <button id="answer1">Option1</button>
+                    <button id="answer2">Option2</button>
+                </div>
+                <div class="second-two-button">
+                    <button id="answer3">Option3</button>
+                    <button id="answer4">Option4</button>
+                </div>
+            </div>
+            <button id="next_question" onclick="loadQuestions()">Next Question</button>
         </div>
-    </div>
 
-    <button id="click">Hello there</button>
+    <button id="click">Start Game!</button>
 
 <script src="./script.js"></script>
 </body>

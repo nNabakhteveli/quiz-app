@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Orienta&display=swap');
+
+
+html {
+    background: #2B696D;
+    position: relative;
+}
+
+.text {
+    position: absolute;
+    left: 250px;
+    top: 55px;
+    font-family: 'Orienta', sans-serif;
+    font-size: 2rem;    
+    text-align: center;
+    color: #FFFFFF;
+}
+
+
+.difficulty-div {
+    position: absolute;
+    left: 820px;
+    top: 295px;
+}
+
+.category-options {
+    position: absolute;
+    left: 300px;
+    top: 295px;
+}
+
+
+#quiz-container {
+    background: white;
+    border: 1px solid grey;
+    border-radius: 10px;
+    text-align: center;
+    margin: 20px;
+    visibility: hidden;
+    width: fit-content;
+    height: fit-content;
+}
+
+#question-text {
+    font-size: 2rem;
+    margin-top: 100px;
+}
+
+#points {
+    font-size: 1.2rem;
+    font-family: 'Orienta', sans-serif;
+    position: relative;
+    left: 600px;
+}
+
+#answer-buttons-div {
+    margin-top: 200px;
+}
+
+.first-two-button {
+    margin: 50px;
+}
+
+#next_question {
+    margin-left: 1100px;
+    margin-bottom: 40px;
+    background: greenyellow;
+    border: none;
+    font-size: 1.1rem;
+    padding: 10px;
+}
+
+
+#click {
+    position: relative;
+    left: 600px;
+    top: -20px;
+    font-size: 1.25rem;
+}
