@@ -1,7 +1,7 @@
-import * as buttonStyling from './buttonStyle.js';
-import categories from './gettingData.js';
-import isRightOrNot from './handleAnswers.js';
-import styleHTML from './showupQuestions.js';
+import * as buttonStyling from './components/buttonStyle.js';
+import categories from './components/gettingData.js';
+import isRightOrNot from './components/handleAnswers.js';
+import styleHTML from './components/showupQuestions.js';
 
 categories();
 
