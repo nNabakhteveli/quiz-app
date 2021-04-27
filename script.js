@@ -1,7 +1,8 @@
 import * as buttonStyling from './components/buttonStyle.js';
 import categories from './components/gettingData.js';
 import isRightOrNot from './components/handleAnswers.js';
-import styleHTML from './components/showupQuestions.js';
+import styleHTML from './components/showupQuiz.js';
+
 
 categories();
 
@@ -134,13 +135,9 @@ function loadQuestions() {
     xhr.send();
 }
 
+
 document.getElementById('click').addEventListener('click', loadQuestions);
 document.getElementById('next_question').addEventListener('click', loadQuestions);
-
-document.getElementById('play-again-button').addEventListener('click', () => {
-    styleHTML();
-    loadQuestions();
-});
 
 
 

@@ -7,6 +7,7 @@ html {
     width: fit-content;
 }
 
+
 .text {
     position: absolute;
     left: 250px;
@@ -37,17 +38,19 @@ html {
     border-radius: 10px;
     text-align: center;
     margin: 20px;
+    margin-top: -10px;
+    margin-left: 160px;
     visibility: hidden;
-    width: auto;
-    height: fit-content;
+    width: 1000px;
+    height: auto;
 }
 
 #question-text {
-    margin-left: 380px;
+    float: center;
     font-family: 'Open Sans', sans-serif;
     font-size: 2rem;
     margin-top: 30px;
-    width: 550px;
+    max-width: 1000px;
 }
 
 #gameProgress {
@@ -55,13 +58,13 @@ html {
     font-family: 'Open Sans', sans-serif;
     position: relative;
     top: -45px;
-    left: 570px;
+    left: 430px;
 }
 
 #points {
     font-size: 1.2rem;
     font-family: 'Open Sans', sans-serif;
-    margin-left: -1050px;
+    margin-left: -820px;
 }
 
 #answer-buttons-div {
@@ -92,8 +95,7 @@ html {
 }
 
 #next_question {
-    margin-left: 1100px;
-    margin-right: 50px;
+    margin-left: 750px;
     margin-bottom: 40px;
     font-family: 'Open Sans', sans-serif;
     background: greenyellow;
@@ -138,7 +140,7 @@ html {
     text-align: center;
     font-size: 2rem;    
     position: relative;
-    left: 0px;
+    left: 85px;
     top: -500px;
     cursor: pointer;
 }
@@ -146,10 +148,10 @@ html {
 #play-again-button {
     visibility: hidden;
     position: relative;
-    top: -250px;
+    top: -350px;
     font-family: 'Open Sans', sans-serif;
-    left: 603px;
-    font-size: 1.25rem;
+    left: 605px;
+    font-size: 1.6rem;
     cursor: pointer;
     opacity: 0.5;
     transition: .2s;
