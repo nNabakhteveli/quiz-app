@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Orienta&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 
 html {
     background: #2B696D;
@@ -44,7 +44,7 @@ html {
 
 #question-text {
     margin-left: 380px;
-    position: fixed;
+    font-family: 'Open Sans', sans-serif;
     font-size: 2rem;
     margin-top: 30px;
     width: 550px;
@@ -52,20 +52,20 @@ html {
 
 #gameProgress {
     font-size: 1.2rem;
-    font-family: 'Orienta', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     position: relative;
     top: -45px;
-    left: 600px;
+    left: 570px;
 }
 
 #points {
     font-size: 1.2rem;
-    font-family: 'Orienta', sans-serif;
-    margin-left: -1150px;
+    font-family: 'Open Sans', sans-serif;
+    margin-left: -1050px;
 }
 
 #answer-buttons-div {
-    margin-top: 200px;
+    margin-top: 80px;
     padding: 5px;
 }
 
@@ -76,6 +76,15 @@ html {
     border: white;
     border-radius: 10px;
     cursor: pointer;
+    opacity: 0.5;
+    transition: .2s;
+}
+
+#answer1:hover, #answer2:hover, #answer3:hover, #answer4:hover {
+    box-shadow: 1px 1px #53a7ea, 2px 2px #53a7ea, 3px 3px #53a7ea;
+    -webkit-transform: translateX(-3px);
+    transform: translateX(-3px);
+    opacity: 1;
 }
 
 .first-two-button {
@@ -84,12 +93,20 @@ html {
 
 #next_question {
     margin-left: 1100px;
+    margin-right: 50px;
     margin-bottom: 40px;
+    font-family: 'Open Sans', sans-serif;
     background: greenyellow;
     border: none;
     font-size: 1.1rem;
     padding: 10px;
     cursor: pointer;
+    transition: .3s;
+}
+
+#next_question:hover {
+    background-color: #3ea834;
+    color: white;
 }
 
 
@@ -99,6 +116,17 @@ html {
     top: 500px;
     font-size: 1.25rem;
     cursor: pointer;
+    font-family: 'Open Sans', sans-serif;
+    opacity: 0.5;
+    transition: .2s;
+}
+
+
+#click:hover {
+    box-shadow: 1px 1px #53a7ea, 2px 2px #53a7ea, 3px 3px #53a7ea;
+    -webkit-transform: translateX(-3px);
+    transform: translateX(-3px);
+    opacity: 1;
 }
 
 #endgame-div {
@@ -108,7 +136,7 @@ html {
 
 #player-info {
     color: white;
-    font-family: 'Orienta', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     text-align: center;
     font-size: 2rem;    
     position: relative;
@@ -121,7 +149,17 @@ html {
     visibility: hidden;
     position: relative;
     top: -250px;
+    font-family: 'Open Sans', sans-serif;
     left: 603px;
     font-size: 1.25rem;
     cursor: pointer;
+    opacity: 0.5;
+    transition: .2s;
+}
+
+#play-again-button:hover {
+    box-shadow: 1px 1px #53a7ea, 2px 2px #53a7ea, 3px 3px #53a7ea;
+    -webkit-transform: translateX(-3px);
+    transform: translateX(-3px);
+    opacity: 1;
 }

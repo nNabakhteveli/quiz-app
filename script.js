@@ -59,22 +59,11 @@ let do_not_repeat_number = () => {
 do_not_repeat_number();
 
 
-const quiz_container = document.getElementById('quiz-container');
 let question_text = document.getElementById('question-text');
 let button1 = document.getElementById('answer1');
 let button2 = document.getElementById('answer2');
 let button3 = document.getElementById('answer3');
 let button4 = document.getElementById('answer4');
-
-
-function endGame() {
-    quiz_container.style.visibility = 'hidden';
-    question_text.style.visibility = 'hidden';
-    document.getElementById('endgame-div').style.visibility = 'visible';
-    document.getElementById('play-again-button').style.visibility = 'visible';
-    document.getElementById('player-info').innerHTML = `Your score is - ${playerScore}!
-Want to play again?`;
-}
 
 
 // function playAgain()

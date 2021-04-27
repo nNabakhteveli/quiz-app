@@ -5,15 +5,14 @@ const button2 = document.getElementById('answer2');
 const button3 = document.getElementById('answer3');
 const button4 = document.getElementById('answer4');
 
-let progress = 0;
-let playerScore = 0;
-document.getElementById('gameProgress').innerHTML = `${progress} / 10`;
-document.getElementById('points').innerHTML = `Your Points - ${playerScore}`;
-
 
 export default function isRightOrNot(question) {
+    let progress = 0;
+    let playerScore = 0;
+
     button1.onclick = () => {
         if(button1.firstChild.data === question.correct_answer) {
+            progress += 1;
             playerScore += 10;
             buttonStyling.styleRightAnswerForButton1();
             console.log("That's right!");
@@ -21,7 +20,6 @@ export default function isRightOrNot(question) {
             buttonStyling.styleWrongAnswerForButton1();
             console.log("Wrong answer buddy"); 
         }
-        progress += 1;
     }
 
     button2.onclick = () => {
@@ -59,4 +57,7 @@ export default function isRightOrNot(question) {
         }
         progress += 1;
     }
+
+    document.getElementById('gameProgress').innerHTML = `${progress} / 10`;
+    document.getElementById('points').innerHTML = `Your Points - ${playerScore}`;
 }
