@@ -6,7 +6,6 @@ import styleHTML from './components/showupQuiz.js';
 
 categories();
 
-
 // This only works for 3 number array. I needed 4 number, so I made new function for that but I didn't deleted this just in case
 let do_not_repeat_number = () => {
     // Putting all 3 numbers in the array
@@ -32,9 +31,9 @@ let do_not_repeat_number = () => {
         arr.push(0);
     }
     
-    // if (arr.length == 5){
-    //     arr.pop();
-    // }
+    if (arr.length == 4){
+        arr.pop();
+    }
 
     return arr;
 
@@ -81,9 +80,7 @@ let button3 = document.getElementById('answer3');
 let button4 = document.getElementById('answer4');
 
 
-// function playAgain()
-
-function loadQuestions() {
+export default function loadQuestions() {
     styleHTML();
     const xhr = new XMLHttpRequest();
     const URL = 'https://opentdb.com/api.php?amount=10&type=multiple';
@@ -112,9 +109,7 @@ function loadQuestions() {
             button3.textContent = answers[randomAnswersNumber[2]];
             button4.textContent = answers[randomAnswersNumber[3]];
 
-
             console.log(random_question);
-
             isRightOrNot(random_question);
         }
         

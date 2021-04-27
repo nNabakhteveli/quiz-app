@@ -1,4 +1,5 @@
 import * as buttonStyling from './buttonStyle.js';
+import loadQuestions from '../script.js';
 import styleHTML from './showupQuiz.js';
 
 const button1 = document.getElementById('answer1');
@@ -7,9 +8,9 @@ const button3 = document.getElementById('answer3');
 const button4 = document.getElementById('answer4');
 
 
+// Game info - progress and score
 let progress = 1;
 let playerScore = 0;
-
 
 
 let gameProgressText = document.getElementById('gameProgress');
@@ -29,6 +30,7 @@ function incrementPlayerScore() {
     playerScoreText.innerHTML = `Your Points - ${playerScore}`;
 }
 
+// 
 
 const quiz_container = document.getElementById('quiz-container');
 const question_text = document.getElementById('question-text');
@@ -96,6 +98,7 @@ export default function isRightOrNot(question) {
 
 document.getElementById('next_question').addEventListener('click', incrementGameProgress);
 
+// Game reset button
 document.getElementById('play-again-button').addEventListener('click', () => {
     styleHTML();
     progress = 1;
