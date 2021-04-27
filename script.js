@@ -1,54 +1,43 @@
-let questCategory = document.getElementById('question-category');
-
-// Fetching categories from the api to put in the <select /> tag
-function categories() {
-    const URL = 'https://opentdb.com/api_category.php';
-    let xhr = new XMLHttpRequest();
-
-    xhr.open('GET', URL, true);
-
-
-    xhr.onload = function() {
-        if(this.status == 200) {
-            let choose_difficulty = JSON.parse(this.responseText);
-            let arr = [];
-            arr.push(choose_difficulty);
-            // console.log(arr);
-
-            let options;
-            for(let item = 0; item < arr.length; item++) {
-                let itemsArray = arr[item].trivia_categories;
-
-                options += '<option value="selected value" disabled default selected value>Choose Category</option>';
-                for(let i in itemsArray) {
-                    options += `<option value=${itemsArray[i].name} id_of_category='${itemsArray[i].id}'>${itemsArray[i].name}</option>`;
-                }
-                // console.log(itemsArray);
-            }
-            questCategory.innerHTML = options;
-        }
-    }
-    xhr.send();
-}
+import * as buttonStyling from './buttonStyle.js';
+import categories from './gettingData.js';
+import isRightOrNot from './handleAnswers.js';
+import styleHTML from './showupQuestions.js';
 
 categories();
 
 
+// For random answers
 let do_not_repeat_number = () => {
+    // Putting all 3 numbers in the array
     let arr = [];    
     for(let i = 0; i < 3; i++) {
         let randomNumber = Math.floor(Math.random() * 3);
         arr.push(randomNumber);    
     }
     
+    // If the first and second, or third element in an array are equal, that element will be removed 
     for(let j = 0; j < arr.length; j++) {
         if(arr[j] === arr[j + 1] || arr[j] === arr[j + 2]) {
             let repeatingNumber = arr.indexOf(arr[j]);
             arr.splice(repeatingNumber, 1);
         }
     }
+
+    if (arr[0] + arr[1] == 1) {
+        arr.push(2);
+    } else if(arr[0] + arr[1] == 2) {
+        arr.push(1);
+    } else if(arr[0] + arr[1] == 3) {
+        arr.push(0);
+    }
     
-    // Calculating number that's missing in the array
+    if (arr.length == 4){
+        arr.pop();
+    }
+
+    return arr;
+
+ // Calculating number that's missing in the array
     /* Logic behind this:
         Let's say, we have an array - [a, b];
         There are three possible ways that the number can be modified in the array,
@@ -64,25 +53,6 @@ let do_not_repeat_number = () => {
         [2 + 0] = 2, so it's missing the number 1
     
     */ 
-
-
-    if(arr[0] + arr[1] == 1) {
-        arr.push(2);
-    } else if(arr[0] + arr[1] == 2) {
-        arr.push(1);
-    } else if(arr[0] + arr[1] == 3) {
-        arr.push(0);
-    }
-    
-    // arr.push(3);
-
-
-
-    if(arr.length == 4){
-        arr.pop();
-    }
-
-    return arr;
 }
 
 
@@ -90,7 +60,6 @@ do_not_repeat_number();
 
 
 const quiz_container = document.getElementById('quiz-container');
-const input_container = document.getElementById('input-container');
 let question_text = document.getElementById('question-text');
 let button1 = document.getElementById('answer1');
 let button2 = document.getElementById('answer2');
@@ -108,141 +77,7 @@ Want to play again?`;
 }
 
 
-let progress = 0;
-let playerScore = 0;
-function styleHTML() {
-    quiz_container.style.visibility = 'visible';
-    question_text.style.visibility = 'visible';
-    input_container.style.visibility = 'hidden';
-    document.getElementById('endgame-div').style.visibility = 'hidden';
-    document.getElementById('play-again-button').style.visibility = 'hidden';
-    document.getElementById('click').style.visibility = 'hidden';
-    document.getElementById('hello_text').style.visibility = 'hidden';
-
-    document.getElementById('gameProgress').innerHTML = `${progress} / 10`;
-
-    if(progress >= 10) {
-        endGame();
-    }
-
-    document.getElementById('points').innerHTML = `Your Points - ${playerScore}`;
-}
-    
-// Styling the button. This is the worst way I could do, but it's okay for now
-
-// Button 1
-function styleRightAnswerForButton1() {
-    button1.disabled = true;
-    button1.style.backgroundColor = '#1f913d';
-    button1.style.color = 'black';
-    button1.style.border = 'none';
-    button1.style.padding = '10px';
-    button1.style.borderRadius = '10px';
-}
-
-function styleWrongAnswerForButton1() {
-    button1.disabled = true;
-    button1.style.backgroundColor = '#b80f17';
-    button1.style.color = 'white';
-    button1.style.border = 'none';
-    button1.style.padding = '10px';
-    button1.style.borderRadius = '10px';
-}
-
-function unstyleRightAnswerForButton1() {
-    button1.disabled = false;
-    button1.style.backgroundColor = '#d7d9d7';
-    button1.style.color = 'black';
-    button1.style.border = 'white';
-    button1.style.padding = '10px';
-    button1.style.borderRadius = '10px';
-}
-
-
-// Button 2
-function styleRightAnswerForButton2() {
-    button2.disabled = true;
-    button2.style.backgroundColor = '#1f913d';
-    button2.style.color = 'black';
-    button2.style.border = 'none';
-    button2.style.padding = '10px';
-    button2.style.borderRadius = '10px';
-}
-
-function styleWrongAnswerForButton2() {
-    button2.disabled = true;
-    button2.style.backgroundColor = '#b80f17';
-    button1.style.color = 'white';
-    button2.style.border = 'none';
-    button2.style.padding = '10px';
-    button2.style.borderRadius = '10px';
-}
-
-function unstyleRightAnswerForButton2() {
-    button2.disabled = false;
-    button2.style.backgroundColor = '#d7d9d7';
-    button2.style.border = 'white';
-    button2.style.padding = '10px';
-    button2.style.borderRadius = '10px';
-}
-
-
-// Button 3
-function styleRightAnswerForButton3() {
-    button3.disabled = true;
-    button3.style.backgroundColor = '#1f913d';
-    button3.style.color = 'black';
-    button3.style.border = 'none';
-    button3.style.padding = '10px';
-    button3.style.borderRadius = '10px';
-}
-
-function styleWrongAnswerForButton3() {
-    button3.disabled = true;
-    button3.style.backgroundColor = '#b80f17';
-    button1.style.color = 'white';
-    button3.style.border = 'none';
-    button3.style.padding = '10px';
-    button3.style.borderRadius = '10px';
-}
-
-function unstyleRightAnswerForButton3() {
-    button3.disabled = false;
-    button3.style.backgroundColor = '#d7d9d7';
-    button3.style.border = 'white';
-    button3.style.padding = '10px';
-    button3.style.borderRadius = '10px';
-}
-
-
-// Button 4
-function styleRightAnswerForButton4() {
-    button4.disabled = true;
-    button4.style.backgroundColor = '#1f913d';
-    button4.style.color = 'black';
-    button4.style.border = 'none';
-    button4.style.padding = '10px';
-    button4.style.borderRadius = '10px';
-}
-
-function styleWrongAnswerForButton4() {
-    button4.disabled = true;
-    button4.style.backgroundColor = '#b80f17';
-    button1.style.color = 'white';
-    button4.style.border = 'none';
-    button4.style.padding = '10px';
-    button4.style.borderRadius = '10px';
-}
-
-function unstyleRightAnswerForButton4() {
-    button4.disabled = false;
-    button4.style.backgroundColor = '#d7d9d7';
-    button4.style.border = 'white';
-    button4.style.padding = '10px';
-    button4.style.borderRadius = '10px';
-}
-
-
+// function playAgain()
 
 function loadQuestions() {
     styleHTML();
@@ -279,78 +114,28 @@ function loadQuestions() {
             console.log(random_question);
 
 
-            let isRightOrNot = () => {
-                button1.onclick = () => {
-                    if(button1.firstChild.data === random_question.correct_answer) {
-                        playerScore += 10;
-                        styleRightAnswerForButton1();
-                        console.log("That's right!");
-                    } else {
-                        styleWrongAnswerForButton1();
-                        console.log("Wrong answer buddy"); 
-                    }
-                    progress += 1;
-                }
-
-                button2.onclick = () => {
-                    if(button2.firstChild.data === random_question.correct_answer) {
-                        playerScore += 10;
-                        styleRightAnswerForButton2();
-                        console.log("That's right!");
-                    } else {
-                        styleWrongAnswerForButton2();
-                        console.log("Wrong answer buddy"); 
-                    }
-                    progress += 1;
-                }
-
-                button3.onclick = () => {
-                    if(button3.firstChild.data === random_question.correct_answer) {
-                        playerScore += 10;
-                        styleRightAnswerForButton3();
-                        console.log("That's right!");
-                    } else {
-                        styleWrongAnswerForButton3();
-                        console.log("Wrong answer buddy"); 
-                    }
-                    progress += 1;
-                }
-
-                button4.onclick = () => {
-                    if(button4.firstChild.data === random_question.correct_answer) {
-                        playerScore += 10;
-                        styleRightAnswerForButton4();
-                        console.log("That's right!");
-                    } else {
-                        styleWrongAnswerForButton4();
-                        console.log("Wrong answer buddy"); 
-                    }
-                    progress += 1;
-                }
-            }
-
-            isRightOrNot();
+            isRightOrNot(random_question);
         }
         if(this.status == 200) {
            let response = JSON.parse(this.responseText).results;
            getRandomQuestion(response);
         }
 
-        /* After user will click on the button, button will become green if answer is right, 
-        red if answer is wrong. Then, when new question will be generated, buttons will need to
+        /* After user will click on the button, button will become green if the answer is right, 
+        and red if the answer is wrong. Then, when the new question will be generated, buttons will need to
         return to normal colors, so this functions below will handle that */
 
-        unstyleRightAnswerForButton1();
-        unstyleRightAnswerForButton2();
-        unstyleRightAnswerForButton3();
-        unstyleRightAnswerForButton4();
-
+        buttonStyling.unstyleRightAnswerForButton1();
+        buttonStyling.unstyleRightAnswerForButton2();
+        buttonStyling.unstyleRightAnswerForButton3();
+        buttonStyling.unstyleRightAnswerForButton4();
     }
     xhr.send();
 }
 
 document.getElementById('click').addEventListener('click', loadQuestions);
 document.getElementById('next_question').addEventListener('click', loadQuestions);
+
 document.getElementById('play-again-button').addEventListener('click', () => {
     styleHTML();
     loadQuestions();

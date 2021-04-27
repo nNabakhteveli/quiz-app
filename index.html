@@ -51,14 +51,16 @@ get high points!</pre>
             </div>
         </div>
 
-        <button id="next_question" onclick="loadQuestions()">Next Question</button>
+        <button id="next_question">Next Question</button>
     </div>
 
     <div id="endgame-div">
         <pre id='player-info'></pre>
-        <button id='play-again-button' onclick="loadQuestions()">Play again!</button>
+        <button id='play-again-button'>Play again!</button>
     </div>
 
-<script src="./script.js"></script>
+<script src="./script.js" type="module"></script>
+<script src="./handleAnswers.js" type='module'></script>
+<script src="./showupQuestions.js" type="module"></script>
 </body>
 </html>
