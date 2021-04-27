@@ -4,113 +4,142 @@ const button3 = document.getElementById('answer3');
 const button4 = document.getElementById('answer4');
 
 
-export function styleRightAnswerForButton1() {
+const buttonsArr = [button1, button2, button3, button4];
+
+for(let i = 0; i < buttonsArr.length; i++) {
+    buttonsArr[i].onmouseover = function() {
+        buttonsArr[i].style.opacity = '1'; 
+    }
+}
+
+for(let i = 0; i < buttonsArr.length; i++) {
+    buttonsArr[i].onmouseleave = function() {
+        buttonsArr[i].style.opacity = '0.6'; 
+    }
+}
+
+
+function disableButtons() {
     button1.disabled = true;
-    button1.style.backgroundColor = '#1f913d';
-    button1.style.color = 'black';
-    button1.style.border = 'none';
-    button1.style.padding = '10px';
-    button1.style.borderRadius = '10px';
+    button2.disabled = true;
+    button3.disabled = true;
+    button4.disabled = true;
+}
+
+function enableButtons() {
+    button1.disabled = false;
+    button2.disabled = false;
+    button3.disabled = false;
+    button4.disabled = false;
+}
+
+function fullOpacity(button) {
+    button.style.opacity = '1';
+}
+
+function halfOpacity(button) {
+    button.style.opacity = '0.6';
+}
+
+function rightAnswer(button) {
+    button.style.backgroundColor = '#1f913d';
+    button.style.color = 'black';
+    button.style.border = 'none';
+    button.style.padding = '10px';
+    button.style.borderRadius = '10px';
+}
+
+function wrongAnswer(button) {
+    button.style.backgroundColor = '#b80f17';
+    button.style.color = 'white';
+    button.style.border = 'none';
+    button.style.padding = '10px';
+    button.style.borderRadius = '10px';
+}
+
+function unstyle(button) {
+    button.style.backgroundColor = '#d7d9d7';
+    button.style.color = 'black';
+    button.style.border = 'white';
+    button.style.padding = '10px';
+    button.style.borderRadius = '10px';
+}
+
+
+export function styleRightAnswerForButton1() {
+    disableButtons();
+    fullOpacity(button1);
+    rightAnswer(button1);
 }
 
 export function styleWrongAnswerForButton1() {
-    button1.disabled = true;
-    button1.style.backgroundColor = '#b80f17';
-    button1.style.color = 'white';
-    button1.style.border = 'none';
-    button1.style.padding = '10px';
-    button1.style.borderRadius = '10px';
+    disableButtons();
+    fullOpacity(button1);
+    wrongAnswer(button1);
 }
 
 export function unstyleRightAnswerForButton1() {
-    button1.disabled = false;
-    button1.style.backgroundColor = '#d7d9d7';
-    button1.style.color = 'black';
-    button1.style.border = 'white';
-    button1.style.padding = '10px';
-    button1.style.borderRadius = '10px';
+    enableButtons();
+    halfOpacity(button1);
+    unstyle(button1);
 }
 
 
 // Button 2
 export function styleRightAnswerForButton2() {
-    button2.disabled = true;
-    button2.style.backgroundColor = '#1f913d';
-    button2.style.color = 'black';
-    button2.style.border = 'none';
-    button2.style.padding = '10px';
-    button2.style.borderRadius = '10px';
+    disableButtons();
+    fullOpacity(button2);
+    rightAnswer(button2);
 }
 
 export function styleWrongAnswerForButton2() {
-    button2.disabled = true;
-    button2.style.backgroundColor = '#b80f17';
-    button1.style.color = 'white';
-    button2.style.border = 'none';
-    button2.style.padding = '10px';
-    button2.style.borderRadius = '10px';
+    disableButtons();
+    fullOpacity(button2);
+    wrongAnswer(button2);
 }
 
 export function unstyleRightAnswerForButton2() {
-    button2.disabled = false;
-    button2.style.backgroundColor = '#d7d9d7';
-    button2.style.border = 'white';
-    button2.style.padding = '10px';
-    button2.style.borderRadius = '10px';
+    enableButtons();
+    halfOpacity(button2);
+    unstyle(button2);
 }
 
 
 // Button 3
 export function styleRightAnswerForButton3() {
-    button3.disabled = true;
-    button3.style.backgroundColor = '#1f913d';
-    button3.style.color = 'black';
-    button3.style.border = 'none';
-    button3.style.padding = '10px';
-    button3.style.borderRadius = '10px';
+    disableButtons();
+    fullOpacity(button3);
+    rightAnswer(button3);
 }
 
 export function styleWrongAnswerForButton3() {
-    button3.disabled = true;
-    button3.style.backgroundColor = '#b80f17';
-    button1.style.color = 'white';
-    button3.style.border = 'none';
-    button3.style.padding = '10px';
-    button3.style.borderRadius = '10px';
+    disableButtons();
+    fullOpacity(button3);
+    wrongAnswer(button3);
 }
 
 export function unstyleRightAnswerForButton3() {
-    button3.disabled = false;
-    button3.style.backgroundColor = '#d7d9d7';
-    button3.style.border = 'white';
-    button3.style.padding = '10px';
-    button3.style.borderRadius = '10px';
+    enableButtons();
+    halfOpacity(button3);
+    unstyle(button3);
 }
 
 
 // Button 4
 export function styleRightAnswerForButton4() {
-    button4.disabled = true;
-    button4.style.backgroundColor = '#1f913d';
-    button4.style.color = 'black';
-    button4.style.border = 'none';
-    button4.style.padding = '10px';
-    button4.style.borderRadius = '10px';
+    disableButtons();
+    fullOpacity(button4);
+    rightAnswer(button4);
 }
 
 export function styleWrongAnswerForButton4() {
-    button4.disabled = true;
-    button4.style.backgroundColor = '#b80f17';
-    button1.style.color = 'white';
-    button4.style.border = 'none';
-    button4.style.padding = '10px';
-    button4.style.borderRadius = '10px';
+    disableButtons();
+    fullOpacity(button4);
+    wrongAnswer(button4);
 }
 
 export function unstyleRightAnswerForButton4() {
-    button4.disabled = false;
-    button4.style.backgroundColor = '#d7d9d7';
-    button4.style.border = 'white';
-    button4.style.padding = '10px';
-    button4.style.borderRadius = '10px';
+    enableButtons();
+    halfOpacity(button4);
+    unstyle(button4);
 }

@@ -6,7 +6,7 @@ import styleHTML from './components/showupQuestions.js';
 categories();
 
 
-// For random answers
+// This only works for 3 number array. I needed 4 number, so I made new function for that but I didn't deleted this just in case
 let do_not_repeat_number = () => {
     // Putting all 3 numbers in the array
     let arr = [];    
@@ -31,13 +31,13 @@ let do_not_repeat_number = () => {
         arr.push(0);
     }
     
-    if (arr.length == 4){
-        arr.pop();
-    }
+    // if (arr.length == 5){
+    //     arr.pop();
+    // }
 
     return arr;
 
- // Calculating number that's missing in the array
+    // Calculating number that's missing in the array
     /* Logic behind this:
         Let's say, we have an array - [a, b];
         There are three possible ways that the number can be modified in the array,
@@ -56,7 +56,21 @@ let do_not_repeat_number = () => {
 }
 
 
-do_not_repeat_number();
+const secondRandomNumbers = (range, outputCount) => {
+    let arr = []
+    for (let i = 0; i <= range; i++) {
+      arr.push(i)
+    }
+  
+    let result = [];
+  
+    for (let i = 0; i <= outputCount; i++) {
+      const random = Math.floor(Math.random() * (range - i));
+      result.push(arr[random]);
+      arr[random] = arr[range - i];
+    }  
+    return result;
+}
 
 
 let question_text = document.getElementById('question-text');
@@ -81,30 +95,28 @@ function loadQuestions() {
 
             question_text.innerHTML = random_question.question;
 
-            let randomPosForIncorrectAnswers = do_not_repeat_number();
-
             let answers = [
                 random_question.correct_answer, 
-                random_question.incorrect_answers[randomPosForIncorrectAnswers[0]],
-                random_question.incorrect_answers[randomPosForIncorrectAnswers[1]],
-                random_question.incorrect_answers[randomPosForIncorrectAnswers[2]]
+                random_question.incorrect_answers[0],
+                random_question.incorrect_answers[1],
+                random_question.incorrect_answers[2]
             ];
 
+            let randomAnswers = [];
+            randomAnswers.push(secondRandomNumbers(3, 3));
+            let randomAnswersNumber = randomAnswers[0];
 
-            // let randomAnswer = do_not_repeat_number();
-            button1.innerHTML = answers[randomPosForIncorrectAnswers[0]];
-            button2.innerHTML = answers[randomPosForIncorrectAnswers[1]];
-            button3.innerHTML = answers[randomPosForIncorrectAnswers[2]];
-            button4.innerHTML = answers[randomPosForIncorrectAnswers[3]];
-            
-            console.log(randomPosForIncorrectAnswers[0]);
-            console.log(randomPosForIncorrectAnswers[1]);
-            console.log(randomPosForIncorrectAnswers[2]);
+            button1.textContent = answers[randomAnswersNumber[0]];
+            button2.textContent = answers[randomAnswersNumber[1]];
+            button3.textContent = answers[randomAnswersNumber[2]];
+            button4.textContent = answers[randomAnswersNumber[3]];
+
+
             console.log(random_question);
-
 
             isRightOrNot(random_question);
         }
+        
         if(this.status == 200) {
            let response = JSON.parse(this.responseText).results;
            getRandomQuestion(response);

@@ -76,7 +76,7 @@ html {
     border: white;
     border-radius: 10px;
     cursor: pointer;
-    opacity: 0.5;
+    opacity: 0.6;
     transition: .2s;
 }
 
@@ -117,7 +117,6 @@ html {
     font-size: 1.25rem;
     cursor: pointer;
     font-family: 'Open Sans', sans-serif;
-    opacity: 0.5;
     transition: .2s;
 }
 
@@ -126,7 +125,6 @@ html {
     box-shadow: 1px 1px #53a7ea, 2px 2px #53a7ea, 3px 3px #53a7ea;
     -webkit-transform: translateX(-3px);
     transform: translateX(-3px);
-    opacity: 1;
 }
 
 #endgame-div {
