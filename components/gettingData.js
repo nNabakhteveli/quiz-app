@@ -36,13 +36,8 @@ export default function categories() {
     let generateQuestion = () => {
         let categoryID = questCategory.value;
         let difficulty = document.getElementById('selectDiff').value;
-        let URL = `https://opentdb.com/api.php?amount=50&category=${categoryID}&difficulty=${difficulty}&type=multiple`;
-
-        // Not every category has many questions, but there is always minimum 10 questions, so this if statement handles that
-        if(difficulty === 'hard' || difficulty === 'medium') {
-            URL = `https://opentdb.com/api.php?amount=10&category=${categoryID}&difficulty=${difficulty}&type=multiple`;
-        }
-       
+        const URL = `https://opentdb.com/api.php?amount=10&category=${categoryID}&difficulty=${difficulty}&type=multiple`;
+      
         let secondCall = new XMLHttpRequest();
         secondCall.open('GET', URL, true);
         
