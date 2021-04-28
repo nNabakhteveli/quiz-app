@@ -28,7 +28,6 @@ export default function categories() {
             }
             questCategory.innerHTML = options;
         }
-        console.log(questCategory.value);
     }
     xhr.send();
 
@@ -93,7 +92,7 @@ export default function categories() {
     document.getElementById('next_question').addEventListener('click', generateQuestion);
 }
     
-
+// Non repeating random numbers
 const secondRandomNumbers = (range, outputCount) => {
     let arr = []
     for (let i = 0; i <= range; i++) {

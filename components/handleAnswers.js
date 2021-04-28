@@ -91,7 +91,7 @@ export default function isRightOrNot(question) {
         }
     }
 
-    if(progress >= 11) {
+    if(progress > 10) {
         endGame();
     }
 }
