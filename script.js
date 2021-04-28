@@ -1,12 +1,8 @@
-import * as buttonStyling from './components/buttonStyle.js';
 import categories from './components/gettingData.js';
-import isRightOrNot from './components/handleAnswers.js';
-import styleHTML from './components/showupQuiz.js';
-
 
 categories();
 
-// This only works for 3 number array. I needed 4 number, so I made new function for that but I didn't deleted this just in case
+// This only works for 3 number array. I needed 4 number, so I made new function for that but I didn't deleted this, for just in case
 let do_not_repeat_number = () => {
     // Putting all 3 numbers in the array
     let arr = [];    
@@ -54,109 +50,3 @@ let do_not_repeat_number = () => {
     
     */ 
 }
-
-
-const secondRandomNumbers = (range, outputCount) => {
-    let arr = []
-    for (let i = 0; i <= range; i++) {
-      arr.push(i)
-    }
-  
-    let result = [];
-  
-    for (let i = 0; i <= outputCount; i++) {
-      const random = Math.floor(Math.random() * (range - i));
-      result.push(arr[random]);
-      arr[random] = arr[range - i];
-    }  
-    return result;
-}
-
-
-let question_text = document.getElementById('question-text');
-let button1 = document.getElementById('answer1');
-let button2 = document.getElementById('answer2');
-let button3 = document.getElementById('answer3');
-let button4 = document.getElementById('answer4');
-
-
-export default function loadQuestions() {
-    styleHTML();
-    const xhr = new XMLHttpRequest();
-    const URL = 'https://opentdb.com/api.php?amount=10&type=multiple';
-    xhr.open('GET', URL, true);
-
-    xhr.onload = function () {
-        let getRandomQuestion = (responseArr) => {
-            let randomNum = Math.floor(Math.random() * responseArr.length);
-            let random_question = responseArr[randomNum];
-
-            question_text.innerHTML = random_question.question;
-
-            let answers = [
-                random_question.correct_answer, 
-                random_question.incorrect_answers[0],
-                random_question.incorrect_answers[1],
-                random_question.incorrect_answers[2]
-            ];
-
-            let randomAnswers = [];
-            randomAnswers.push(secondRandomNumbers(3, 3));
-            let randomAnswersNumber = randomAnswers[0];
-
-            button1.textContent = answers[randomAnswersNumber[0]];
-            button2.textContent = answers[randomAnswersNumber[1]];
-            button3.textContent = answers[randomAnswersNumber[2]];
-            button4.textContent = answers[randomAnswersNumber[3]];
-
-            console.log(random_question);
-            isRightOrNot(random_question);
-        }
-        
-        if(this.status == 200) {
-           let response = JSON.parse(this.responseText).results;
-           getRandomQuestion(response);
-        }
-
-        /* After user will click on the button, button will become green if the answer is right, 
-        and red if the answer is wrong. Then, when the new question will be generated, buttons will need to
-        return to normal colors, so this functions below will handle that */
-
-        buttonStyling.unstyleRightAnswerForButton1();
-        buttonStyling.unstyleRightAnswerForButton2();
-        buttonStyling.unstyleRightAnswerForButton3();
-        buttonStyling.unstyleRightAnswerForButton4();
-    }
-    xhr.send();
-}
-
-
-document.getElementById('click').addEventListener('click', loadQuestions);
-document.getElementById('next_question').addEventListener('click', loadQuestions);
-
-
-
-    // Modifying custom URL. Will finish later 
-   // let get_number_of_questions = (categoryID) => {
-    //     const URL = `https://opentdb.com/api_count.php?category=${categoryID}`;
-    //     let xhr = new XMLHttpRequest();
-    //     xhr.open('GET', URL, true);
-
-    //     xhr.onload = function() {
-    //         if(this.status == 200) {
-    //             let response = JSON.parse(this.responseText);
-
-    //             let searchID = () => {
-    //                 let arr = [];
-    //                 for(let i = 0; i < response.length; i++) {
-    //                     arr.push(response[i]);
-    //                 }
-    //             }
-
-    //             if(categoryID === searchID) {
-    //                 return this.response.total_question_count;
-    //             }
-    //         }
-    //     }
-    //     xhr.send();
-    // }
