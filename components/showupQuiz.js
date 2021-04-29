@@ -5,6 +5,7 @@ const question_text = document.getElementById('question-text');
 
 export default function styleHTML() {
     quiz_container.style.visibility = 'visible';
+    document.getElementById('twitter-share').style.visibility = 'hidden';
     question_text.style.visibility = 'visible';
     input_container.style.visibility = 'hidden';
     document.getElementById('endgame-div').style.visibility = 'hidden';

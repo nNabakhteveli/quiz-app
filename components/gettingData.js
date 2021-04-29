@@ -1,6 +1,7 @@
 import styleHTML from './showupQuiz.js';
 import * as buttonStyling from './buttonStyle.js';
 import isRightOrNot from './handleAnswers.js';
+import incrementGameProgress from './handleAnswers.js';
 
 
 const questCategory = document.getElementById('question-category');
@@ -35,7 +36,7 @@ export default function categories() {
     let generateQuestion = () => {
         let categoryID = questCategory.value;
         let difficulty = document.getElementById('selectDiff').value;
-        const URL = `https://opentdb.com/api.php?amount=10&category=${categoryID}&difficulty=${difficulty}&type=multiple`;
+        const URL = `https://opentdb.com/api.php?amount=1&category=${categoryID}&difficulty=${difficulty}&type=multiple`;
       
         let secondCall = new XMLHttpRequest();
         secondCall.open('GET', URL, true);
@@ -89,14 +90,18 @@ export default function categories() {
         secondCall.send();
     }
     document.getElementById('click').addEventListener('click', generateQuestion);
-    document.getElementById('next_question').addEventListener('click', generateQuestion);
+    
+    document.getElementById('next_question').addEventListener('click', () => {
+        incrementGameProgress();
+        generateQuestion();
+    });
 }
     
 // Non repeating random numbers
 const secondRandomNumbers = (range, outputCount) => {
     let arr = []
     for (let i = 0; i <= range; i++) {
-      arr.push(i)
+      arr.push(i);
     }
   
     let result = [];

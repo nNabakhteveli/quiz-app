@@ -1,12 +1,13 @@
 import * as buttonStyling from './buttonStyle.js';
 import categories from './gettingData.js';
 import styleHTML from './showupQuiz.js';
+import shareOnTwitter from './shareOnTwitter.js';
 
 const button1 = document.getElementById('answer1');
 const button2 = document.getElementById('answer2');
 const button3 = document.getElementById('answer3');
 const button4 = document.getElementById('answer4');
-
+const twitterShare = document.getElementById('twitter-share');
 
 // Game info - progress and score
 let progress = 1;
@@ -20,7 +21,7 @@ let playerScoreText = document.getElementById('points');
 playerScoreText.innerHTML = `Your Points - ${playerScore}`;
 
 
-function incrementGameProgress() {
+export function incrementGameProgress() {
     progress += 1;
     gameProgressText.innerHTML = `${progress} / 10`;
 }
@@ -42,7 +43,7 @@ function endGame() {
     document.getElementById('play-again-button').style.visibility = 'visible';
     document.getElementById('player-info').innerHTML = `Your score is - ${playerScore}!
 Want to play again?`;
-
+    twitterShare.style.visibility = 'visible';
 }
 
 
@@ -97,6 +98,10 @@ export default function isRightOrNot(question) {
 }
 
 document.getElementById('next_question').addEventListener('click', incrementGameProgress);
+
+twitterShare.addEventListener('click', () => {
+    shareOnTwitter(playerScore);
+});
 
 // Game reset button
 document.getElementById('play-again-button').addEventListener('click', () => {

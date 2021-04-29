@@ -183,3 +183,27 @@ html, body {
     transform: translateX(-3px);
     opacity: 1;
 }
+
+
+#twitter-share {
+    background: #00acee;
+    color: white;
+    border: #00acee;
+    border-radius: 150px;
+    padding: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    visibility: hidden;
+    position: relative;
+    top: -510px;
+    left: 430px;
+    transition: 0.3s;
+}
+
+#twitter-share:hover {
+    background: #006287;
+}
+
+.text-with-twitter-icon {
+    font-family: 'Open Sans', sans-serif;
+}
