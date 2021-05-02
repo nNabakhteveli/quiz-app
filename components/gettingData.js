@@ -24,7 +24,7 @@ export default function categories() {
 
             let options;
             for(let i in response) {
-                options += `<option value=${response[i].id}>${response[i].name}</option>`;
+                options += `<option class='categories' value=${response[i].id}>${response[i].name}</option>`;
                 questCategory.value = options.value;
             }
             questCategory.innerHTML = options;

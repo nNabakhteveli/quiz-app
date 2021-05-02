@@ -51,6 +51,10 @@ html, body {
     top: 295px;
 }
 
+.difficulty-options, .categories {
+    font-family: 'Open Sans', sans-serif;
+}
+
 
 #quiz-container {
     background: white;
@@ -69,6 +73,7 @@ html, body {
     float: center;
     font-family: 'Open Sans', sans-serif;
     font-size: 2rem;
+    transition: .2s;
     margin-top: 30px;
     max-width: 1000px;
 }
@@ -212,4 +217,5 @@ html, body {
     font-family: 'Open Sans', sans-serif;
     color: white;
     margin-left: 10px;
+    margin-bottom: 2px;
 }
