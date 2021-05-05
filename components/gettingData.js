@@ -1,7 +1,6 @@
 import styleHTML from './showupQuiz.js';
 import * as buttonStyling from './buttonStyle.js';
 import isRightOrNot from './handleAnswers.js';
-import incrementGameProgress from './handleAnswers.js';
 
 
 const questCategory = document.getElementById('question-category'),
@@ -63,11 +62,6 @@ export default function categories() {
             randomAnswers.push(secondRandomNumbers(3, 3));
             let randomAnswersNumber = randomAnswers[0];
 
-            // button1.textContent = answers[randomAnswersNumber[0]];
-            // button2.textContent = answers[randomAnswersNumber[1]];
-            // button3.textContent = answers[randomAnswersNumber[2]];
-            // button4.textContent = answers[randomAnswersNumber[3]];
-
             const buttonsArr = [button1, button2, button3, button4];
 
             for(let i = 0; i < buttonsArr.length; i++) {
@@ -95,7 +89,6 @@ export default function categories() {
     document.getElementById('click').addEventListener('click', generateQuestion);
     
     document.getElementById('next_question').addEventListener('click', () => {
-        incrementGameProgress();
         generateQuestion();
     });
 }
