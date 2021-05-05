@@ -62,6 +62,8 @@ export default function categories() {
             randomAnswers.push(secondRandomNumbers(3, 3));
             let randomAnswersNumber = randomAnswers[0];
 
+                
+            // Random position for answers    
             const buttonsArr = [button1, button2, button3, button4];
 
             for(let i = 0; i < buttonsArr.length; i++) {
