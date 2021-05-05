@@ -3,15 +3,14 @@ import categories from './gettingData.js';
 import styleHTML from './showupQuiz.js';
 import shareOnTwitter from './shareOnTwitter.js';
 
-const button1 = document.getElementById('answer1');
-const button2 = document.getElementById('answer2');
-const button3 = document.getElementById('answer3');
-const button4 = document.getElementById('answer4');
-const twitterShare = document.getElementById('twitter-share');
+const button1 = document.getElementById('answer1'),
+    button2 = document.getElementById('answer2'),
+    button3 = document.getElementById('answer3'),
+    button4 = document.getElementById('answer4'),
+    twitterShare = document.getElementById('twitter-share');
 
 // Game info - progress and score
-let progress = 1;
-let playerScore = 0;
+let progress = 1, playerScore = 0;
 
 
 let gameProgressText = document.getElementById('gameProgress');
@@ -33,8 +32,8 @@ function incrementPlayerScore() {
 
 // 
 
-const quiz_container = document.getElementById('quiz-container');
-const question_text = document.getElementById('question-text');
+const quiz_container = document.getElementById('quiz-container'), 
+    question_text = document.getElementById('question-text');
 
 function endGame() {
     quiz_container.style.visibility = 'hidden';

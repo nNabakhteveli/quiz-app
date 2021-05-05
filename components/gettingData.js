@@ -4,12 +4,12 @@ import isRightOrNot from './handleAnswers.js';
 import incrementGameProgress from './handleAnswers.js';
 
 
-const questCategory = document.getElementById('question-category');
-const button1 = document.getElementById('answer1');
-const button2 = document.getElementById('answer2');
-const button3 = document.getElementById('answer3');
-const button4 = document.getElementById('answer4');
-const question_text = document.getElementById('question-text');
+const questCategory = document.getElementById('question-category'),
+    button1 = document.getElementById('answer1'),
+    button2 = document.getElementById('answer2'),
+    button3 = document.getElementById('answer3'),
+    button4 = document.getElementById('answer4'),
+    question_text = document.getElementById('question-text');
 
 
 // Fetching categories from the API to put in the <select /> tag

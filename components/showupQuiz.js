@@ -1,6 +1,6 @@
-const quiz_container = document.getElementById('quiz-container');
-const input_container = document.getElementById('input-container');
-const question_text = document.getElementById('question-text');
+const quiz_container = document.getElementById('quiz-container'),
+    input_container = document.getElementById('input-container'),
+    question_text = document.getElementById('question-text');
 
 
 export default function styleHTML() {
