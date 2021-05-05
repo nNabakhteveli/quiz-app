@@ -9,6 +9,7 @@ const button1 = document.getElementById('answer1'),
     button4 = document.getElementById('answer4'),
     twitterShare = document.getElementById('twitter-share');
 
+
 // Game info - progress and score
 let progress = 1, playerScore = 0;
 
@@ -30,18 +31,18 @@ function incrementPlayerScore() {
     playerScoreText.innerHTML = `Your Points - ${playerScore}`;
 }
 
-// 
 
 const quiz_container = document.getElementById('quiz-container'), 
     question_text = document.getElementById('question-text');
 
-function endGame() {
+ 
+function endGame() { 
     quiz_container.style.visibility = 'hidden';
     question_text.style.visibility = 'hidden';
     document.getElementById('endgame-div').style.visibility = 'visible';
     document.getElementById('play-again-button').style.visibility = 'visible';
     document.getElementById('player-info').innerHTML = `Your score is - ${playerScore}!
-Want to play again?`;
+    Want to play again?`;
     twitterShare.style.visibility = 'visible';
 }
 
@@ -50,10 +51,10 @@ export default function isRightOrNot(question) {
     button1.onclick = () => {
         if(button1.firstChild.data === question.correct_answer) {
             incrementPlayerScore();
-            buttonStyling.styleRightAnswerForButton1();
+            buttonStyling.styleRightAnswer(button1);
             console.log("That's right!");
         } else {
-            buttonStyling.styleWrongAnswerForButton1();
+            buttonStyling.styleWrongAnswer(button1);
             console.log("Wrong answer buddy"); 
         }
     }
@@ -61,10 +62,10 @@ export default function isRightOrNot(question) {
     button2.onclick = () => {
         if(button2.firstChild.data === question.correct_answer) {
             incrementPlayerScore();
-            buttonStyling.styleRightAnswerForButton2();
+            buttonStyling.styleRightAnswer(button2);
             console.log("That's right!");
         } else {
-            buttonStyling.styleWrongAnswerForButton2();
+            buttonStyling.styleWrongAnswer(button2);
             console.log("Wrong answer buddy"); 
         }
     }
@@ -72,10 +73,10 @@ export default function isRightOrNot(question) {
     button3.onclick = () => {
         if(button3.firstChild.data === question.correct_answer) {
             incrementPlayerScore();
-            buttonStyling.styleRightAnswerForButton3();
+            buttonStyling.styleRightAnswer(button3);
             console.log("That's right!");
         } else {
-            buttonStyling.styleWrongAnswerForButton3();
+            buttonStyling.styleWrongAnswer(button3);
             console.log("Wrong answer buddy"); 
         }
     }
@@ -83,10 +84,10 @@ export default function isRightOrNot(question) {
     button4.onclick = () => {
         if(button4.firstChild.data === question.correct_answer) {
             incrementPlayerScore();
-            buttonStyling.styleRightAnswerForButton4();
+            buttonStyling.styleRightAnswer(button4);
             console.log("That's right!");
         } else {
-            buttonStyling.styleWrongAnswerForButton4();
+            buttonStyling.styleWrongAnswer(button4);
             console.log("Wrong answer buddy"); 
         }
     }

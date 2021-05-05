@@ -43,10 +43,8 @@ export default function categories() {
         
         secondCall.onload = function() {
             styleHTML();
-            console.log(difficulty);
 
             let response = JSON.parse(this.responseText).results;
-            console.log(response);
             let getRandomQuestion = (responseArr) => {
             let randomNum = Math.floor(Math.random() * responseArr.length);
             let random_question = responseArr[randomNum];
@@ -65,12 +63,17 @@ export default function categories() {
             randomAnswers.push(secondRandomNumbers(3, 3));
             let randomAnswersNumber = randomAnswers[0];
 
-            button1.textContent = answers[randomAnswersNumber[0]];
-            button2.textContent = answers[randomAnswersNumber[1]];
-            button3.textContent = answers[randomAnswersNumber[2]];
-            button4.textContent = answers[randomAnswersNumber[3]];
+            // button1.textContent = answers[randomAnswersNumber[0]];
+            // button2.textContent = answers[randomAnswersNumber[1]];
+            // button3.textContent = answers[randomAnswersNumber[2]];
+            // button4.textContent = answers[randomAnswersNumber[3]];
 
-            console.log(random_question);
+            const buttonsArr = [button1, button2, button3, button4];
+
+            for(let i = 0; i < buttonsArr.length; i++) {
+                buttonsArr[i].textContent = answers[randomAnswersNumber[i]];
+            }
+
             isRightOrNot(random_question);
         }
 
@@ -82,10 +85,10 @@ export default function categories() {
         and red if the answer is wrong. Then, when the new question will be generated, buttons will need to
         return to normal colors, so this functions below will handle that */
         
-        buttonStyling.unstyleRightAnswerForButton1();
-        buttonStyling.unstyleRightAnswerForButton2();
-        buttonStyling.unstyleRightAnswerForButton3();
-        buttonStyling.unstyleRightAnswerForButton4();
+        buttonStyling.unstyleAnswer(button1);
+        buttonStyling.unstyleAnswer(button2);
+        buttonStyling.unstyleAnswer(button3);
+        buttonStyling.unstyleAnswer(button4);
         }
         secondCall.send();
     }

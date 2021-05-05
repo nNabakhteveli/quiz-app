@@ -7,30 +7,28 @@ const button1 = document.getElementById('answer1'),
 const buttonsArr = [button1, button2, button3, button4];
 
 for(let i = 0; i < buttonsArr.length; i++) {
-    buttonsArr[i].onmouseover = function() {
+    buttonsArr[i].onmouseover = () => {
         buttonsArr[i].style.opacity = '1'; 
     }
 }
 
 for(let i = 0; i < buttonsArr.length; i++) {
-    buttonsArr[i].onmouseleave = function() {
+    buttonsArr[i].onmouseleave = () => {
         buttonsArr[i].style.opacity = '0.6'; 
     }
 }
 
 
 function disableButtons() {
-    button1.disabled = true;
-    button2.disabled = true;
-    button3.disabled = true;
-    button4.disabled = true;
+    for(let i = 0; i < buttonsArr.length; i++) {
+        buttonsArr[i].disabled = true;
+    }
 }
 
 function enableButtons() {
-    button1.disabled = false;
-    button2.disabled = false;
-    button3.disabled = false;
-    button4.disabled = false;
+    for(let i = 0; i < buttonsArr.length; i++) {
+        buttonsArr[i].disabled = false;
+    }
 }
 
 function fullOpacity(button) {
@@ -65,81 +63,20 @@ function unstyle(button) {
     button.style.borderRadius = '10px';
 }
 
-
-export function styleRightAnswerForButton1() {
+export function styleRightAnswer(button) {
     disableButtons();
-    fullOpacity(button1);
-    rightAnswer(button1);
+    fullOpacity(button);
+    rightAnswer(button);
 }
 
-export function styleWrongAnswerForButton1() {
+export function styleWrongAnswer(button) {
     disableButtons();
-    fullOpacity(button1);
-    wrongAnswer(button1);
+    fullOpacity(button);
+    wrongAnswer(button);
 }
 
-export function unstyleRightAnswerForButton1() {
+export function unstyleAnswer(button) {
     enableButtons();
-    halfOpacity(button1);
-    unstyle(button1);
-}
-
-
-// Button 2
-export function styleRightAnswerForButton2() {
-    disableButtons();
-    fullOpacity(button2);
-    rightAnswer(button2);
-}
-
-export function styleWrongAnswerForButton2() {
-    disableButtons();
-    fullOpacity(button2);
-    wrongAnswer(button2);
-}
-
-export function unstyleRightAnswerForButton2() {
-    enableButtons();
-    halfOpacity(button2);
-    unstyle(button2);
-}
-
-
-// Button 3
-export function styleRightAnswerForButton3() {
-    disableButtons();
-    fullOpacity(button3);
-    rightAnswer(button3);
-}
-
-export function styleWrongAnswerForButton3() {
-    disableButtons();
-    fullOpacity(button3);
-    wrongAnswer(button3);
-}
-
-export function unstyleRightAnswerForButton3() {
-    enableButtons();
-    halfOpacity(button3);
-    unstyle(button3);
-}
-
-
-// Button 4
-export function styleRightAnswerForButton4() {
-    disableButtons();
-    fullOpacity(button4);
-    rightAnswer(button4);
-}
-
-export function styleWrongAnswerForButton4() {
-    disableButtons();
-    fullOpacity(button4);
-    wrongAnswer(button4);
-}
-
-export function unstyleRightAnswerForButton4() {
-    enableButtons();
-    halfOpacity(button4);
-    unstyle(button4);
+    halfOpacity(button);
+    unstyle(button);
 }
