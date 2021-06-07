@@ -1,7 +1,22 @@
+import * as styleButton from './buttonStyle.js';
 import styleHTML from './showupQuiz.js';
-import * as buttonStyling from './buttonStyle.js';
 import isRightOrNot from './handleAnswers.js';
 
+
+// Non repeating random numbers
+const secondRandomNumbers = (range, outputCount) => {
+    let arr = [], result = [];
+    for (let i = 0; i <= range; i++) {
+        arr.push(i);
+    }
+    
+    for (let i = 0; i <= outputCount; i++) {
+      const random = Math.floor(Math.random() * (range - i));
+      result.push(arr[random]);
+      arr[random] = arr[range - i];
+    }  
+    return result;
+}
 
 const questCategory = document.getElementById('question-category'),
     button1 = document.getElementById('answer1'),
@@ -19,7 +34,7 @@ export default function categories() {
     xhr.open('GET', URL, true);
     xhr.onload = function() {
         if(this.status == 200) {
-            let response = JSON.parse(this.responseText).trivia_categories;
+            const response = JSON.parse(this.responseText).trivia_categories;
             console.log(response);
 
             let options;
@@ -43,8 +58,8 @@ export default function categories() {
         
         secondCall.onload = function() {
             styleHTML();
-
             let response = JSON.parse(this.responseText).results;
+
             let getRandomQuestion = (responseArr) => {
             let randomNum = Math.floor(Math.random() * responseArr.length);
             let random_question = responseArr[randomNum];
@@ -75,8 +90,8 @@ export default function categories() {
         /* After user will click on the button, button will become green if the answer is right, 
         and red if the answer is wrong. Then, when the new question will be generated, buttons will need to
         return to normal colors, so this functions below will handle that */
-        
-        for(let i = 0; i < buttonsArr.length; i++) { buttonStyling.unstyleAnswer(buttonsArr[i]) }
+                
+        buttonsArr.forEach(button => styleButton.unstyleAnswer(button));
 
         }
         secondCall.send();
@@ -88,17 +103,3 @@ export default function categories() {
     });
 }
     
-// Non repeating random numbers
-const secondRandomNumbers = (range, outputCount) => {
-    let arr = [], result = [];
-    for (let i = 0; i <= range; i++) {
-      arr.push(i);
-    }
-
-    for (let i = 0; i <= outputCount; i++) {
-      const random = Math.floor(Math.random() * (range - i));
-      result.push(arr[random]);
-      arr[random] = arr[range - i];
-    }  
-    return result;
-}
