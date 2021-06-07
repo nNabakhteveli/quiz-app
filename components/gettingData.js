@@ -10,6 +10,7 @@ const questCategory = document.getElementById('question-category'),
     button4 = document.getElementById('answer4'),
     question_text = document.getElementById('question-text');
 
+const buttonsArr = [button1, button2, button3, button4];
 
 // Fetching categories from the API to put in the <select /> tag
 export default function categories() {
@@ -62,12 +63,8 @@ export default function categories() {
             randomAnswers.push(secondRandomNumbers(3, 3));
             let randomAnswersNumber = randomAnswers[0];
 
-            const buttonsArr = [button1, button2, button3, button4];
 
-            for(let i = 0; i < buttonsArr.length; i++) {
-                buttonsArr[i].textContent = answers[randomAnswersNumber[i]];
-            }
-
+            for(let i = 0; i < buttonsArr.length; i++) { buttonsArr[i].textContent = answers[randomAnswersNumber[i]]; }
             isRightOrNot(random_question);
         }
 
@@ -79,10 +76,8 @@ export default function categories() {
         and red if the answer is wrong. Then, when the new question will be generated, buttons will need to
         return to normal colors, so this functions below will handle that */
         
-        buttonStyling.unstyleAnswer(button1);
-        buttonStyling.unstyleAnswer(button2);
-        buttonStyling.unstyleAnswer(button3);
-        buttonStyling.unstyleAnswer(button4);
+        for(let i = 0; i < buttonsArr.length; i++) { buttonStyling.unstyleAnswer(buttonsArr[i]) }
+
         }
         secondCall.send();
     }
@@ -95,13 +90,11 @@ export default function categories() {
     
 // Non repeating random numbers
 const secondRandomNumbers = (range, outputCount) => {
-    let arr = []
+    let arr = [], result = [];
     for (let i = 0; i <= range; i++) {
       arr.push(i);
     }
-  
-    let result = [];
-  
+
     for (let i = 0; i <= outputCount; i++) {
       const random = Math.floor(Math.random() * (range - i));
       result.push(arr[random]);
