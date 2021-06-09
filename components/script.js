@@ -1,7 +1,3 @@
-import categories from './components/gettingData.js';
-
-categories();
-
 // This only works for 3 number array. I needed 4 number, so I made new function for that but I didn't deleted this, for just in case
 let do_not_repeat_number = () => {
     // Putting all 3 numbers in the array
