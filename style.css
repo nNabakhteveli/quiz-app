@@ -1,225 +1,224 @@
-@import url('https://fonts.googleapis.com/css2?family=Orienta&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Jost:wght@300&display=swap');
-
-
-html {
-    background: #059c57;
-    position: relative;
-    width: fit-content;
-}
-
+@import url("https://fonts.googleapis.com/css2?family=Orienta&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Jost:wght@300&display=swap");
 html, body {
-    width: 100%;
-    height: 100%;
-    margin: 0px;
-    padding: 0px;
-    overflow-x: hidden;
+  background: #059c57;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  overflow-x: hidden;
 }
-
 
 .text {
-    position: absolute;
-    left: 330px;
-    top: 55px;
-    font-family: 'Jost', sans-serif;
-    font-size: 2rem; 
-    text-align: center;
-    color: #FFFFFF;
+  position: absolute;
+  left: 330px;
+  top: 55px;
+  font-family: "Jost", sans-serif;
+  font-size: 2rem;
+  text-align: center;
+  color: #FFFFFF;
 }
 
 #github-icon {
-    font-size: 1.4rem;
-    margin-left: 20px;
-    margin-top: 10px;
-    transition: 0.3s;
-    color: white;
+  font-size: 1.4rem;
+  margin-left: 20px;
+  margin-top: 10px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  color: white;
 }
 
 #github-icon:hover {
-    color: #211f1f;
+  color: #211f1f;
 }
 
-
 .difficulty-div {
-    position: absolute;
-    left: 880px;
-    top: 295px;
+  position: absolute;
+  left: 880px;
+  top: 295px;
 }
 
 .category-options {
-    position: absolute;
-    left: 335px;
-    top: 295px;
+  position: absolute;
+  left: 335px;
+  top: 295px;
 }
 
 .difficulty-options, .categories {
-    font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 
 #click {
-    position: relative;
-    left: 630px;
-    top: 500px;
-    font-size: 1.25rem;
-    cursor: pointer;
-    font-family: 'Open Sans', sans-serif;
-    transition: .2s;
+  position: relative;
+  left: 630px;
+  top: 500px;
+  font-size: 1.25rem;
+  cursor: pointer;
+  font-family: "Open Sans", sans-serif;
+  -webkit-transition: .2s;
+  transition: .2s;
 }
 
 #click:hover {
-    box-shadow: 1px 1px #53a7ea, 2px 2px #53a7ea, 3px 3px #53a7ea;
-    -webkit-transform: translateX(-3px);
-    transform: translateX(-3px);
+  -webkit-box-shadow: 1px 1px #53a7ea, 2px 2px #53a7ea, 3px 3px #53a7ea;
+          box-shadow: 1px 1px #53a7ea, 2px 2px #53a7ea, 3px 3px #53a7ea;
+  -webkit-transform: translateX(-3px);
+  transform: translateX(-3px);
 }
 
-
 #quiz-container {
-    background: white;
-    border: 1px solid grey;
-    border-radius: 10px;
-    text-align: center;
-    margin: 20px;
-    margin-top: -10px;
-    margin-left: 160px;
-    visibility: hidden;
-    width: 1000px;
-    height: auto;
+  background: white;
+  border: 1px solid grey;
+  border-radius: 10px;
+  text-align: center;
+  margin: 20px;
+  margin-top: -10px;
+  margin-left: 160px;
+  visibility: hidden;
+  width: 1000px;
+  height: auto;
 }
 
 #question-text {
-    float: center;
-    font-family: 'Open Sans', sans-serif;
-    font-size: 2rem;
-    margin-top: 30px;
-    max-width: 1000px;
+  float: center;
+  font-family: "Open Sans", sans-serif;
+  font-size: 2rem;
+  margin-top: 30px;
+  max-width: 1000px;
 }
 
 #gameProgress {
-    font-size: 1.2rem;
-    font-family: 'Open Sans', sans-serif;
-    position: relative;
-    top: -45px;
-    left: 430px;
+  font-size: 1.2rem;
+  font-family: "Open Sans", sans-serif;
+  position: relative;
+  top: -45px;
+  left: 430px;
 }
 
 #points {
-    font-size: 1.2rem;
-    font-family: 'Open Sans', sans-serif;
-    margin-left: -820px;
+  font-size: 1.2rem;
+  font-family: "Open Sans", sans-serif;
+  margin-left: -820px;
 }
 
 #answer-buttons-div {
-    margin-top: 80px;
-    padding: 5px;
+  margin-top: 80px;
+  padding: 5px;
 }
 
 #answer1, #answer2, #answer3, #answer4 {
-    background: #d7d9d7;
-    font-size: 1.25rem;
-    padding: 10px;
-    border: white;
-    border-radius: 10px;
-    cursor: pointer;
-    opacity: 0.6;
-    transition: .2s;
+  background: #d7d9d7;
+  font-size: 1.25rem;
+  padding: 10px;
+  border: white;
+  border-radius: 10px;
+  cursor: pointer;
+  opacity: 0.6;
+  -webkit-transition: .2s;
+  transition: .2s;
 }
 
 #answer1:hover, #answer2:hover, #answer3:hover, #answer4:hover {
-    box-shadow: 1px 1px #53a7ea, 2px 2px #53a7ea, 3px 3px #53a7ea;
-    -webkit-transform: translateX(-3px);
-    transform: translateX(-3px);
-    opacity: 1;
+  -webkit-box-shadow: 1px 1px #53a7ea, 2px 2px #53a7ea, 3px 3px #53a7ea;
+          box-shadow: 1px 1px #53a7ea, 2px 2px #53a7ea, 3px 3px #53a7ea;
+  -webkit-transform: translateX(-3px);
+  transform: translateX(-3px);
+  opacity: 1;
 }
 
 .first-two-button {
-    margin: 50px;
+  margin: 50px;
 }
 
 #next_question {
-    margin-left: 750px;
-    margin-bottom: 40px;
-    font-family: 'Open Sans', sans-serif;
-    background: greenyellow;
-    border: none;
-    font-size: 1.1rem;
-    padding: 10px;
-    cursor: pointer;
-    transition: .3s;
+  margin-left: 750px;
+  margin-bottom: 40px;
+  font-family: "Open Sans", sans-serif;
+  background: greenyellow;
+  border: none;
+  font-size: 1.1rem;
+  padding: 10px;
+  cursor: pointer;
+  -webkit-transition: .3s;
+  transition: .3s;
 }
 
 #next_question:hover {
-    background-color: #3ea834;
-    color: white;
+  background-color: #3ea834;
+  color: white;
 }
 
-
 #endgame-div {
-    font-size: 2rem;
-    visibility: visible;
+  font-size: 2rem;
+  visibility: visible;
 }
 
 #player-info {
-    color: white;
-    font-family: 'Open Sans', sans-serif;
-    text-align: center;
-    font-size: 2rem;    
-    position: relative;
-    left: 25px;
-    top: -500px;
-    cursor: pointer;
+  color: white;
+  font-family: "Open Sans", sans-serif;
+  text-align: center;
+  font-size: 2rem;
+  position: relative;
+  left: 25px;
+  top: -500px;
+  cursor: pointer;
 }
 
 #play-again-button {
-    visibility: hidden;
-    position: relative;
-    top: -350px;
-    font-family: 'Open Sans', sans-serif;
-    left: 630px;
-    font-size: 1.6rem;
-    cursor: pointer;
-    opacity: 0.5;
-    transition: .2s;
+  visibility: hidden;
+  position: relative;
+  top: -350px;
+  font-family: "Open Sans", sans-serif;
+  left: 630px;
+  font-size: 1.6rem;
+  cursor: pointer;
+  opacity: 0.5;
+  -webkit-transition: .2s;
+  transition: .2s;
 }
 
 #play-again-button:hover {
-    box-shadow: 1px 1px #53a7ea, 2px 2px #53a7ea, 3px 3px #53a7ea;
-    -webkit-transform: translateX(-3px);
-    transform: translateX(-3px);
-    opacity: 1;
+  -webkit-box-shadow: 1px 1px #53a7ea, 2px 2px #53a7ea, 3px 3px #53a7ea;
+          box-shadow: 1px 1px #53a7ea, 2px 2px #53a7ea, 3px 3px #53a7ea;
+  -webkit-transform: translateX(-3px);
+  transform: translateX(-3px);
+  opacity: 1;
 }
 
-
 #twitter-share {
-    background: #00acee;
-    color: white;
-    border: #00acee;
-    border-radius: 150px;
-    padding: 10px;
-    font-size: 1rem;
-    cursor: pointer;
-    visibility: hidden;
-    position: relative;
-    top: -510px;
-    left: 510px;
-    transition: 0.3s;
+  background: #00acee;
+  color: white;
+  border: #00acee;
+  border-radius: 150px;
+  padding: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  visibility: hidden;
+  position: relative;
+  top: -510px;
+  left: 510px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
 }
 
 #twitter-share:hover {
-    background: #006287;
+  background: #006287;
 }
 
 .text-with-twitter-icon {
-    font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 
 #credit {
-    font-family: 'Open Sans', sans-serif;
-    color: white;
-    margin-left: 10px;
-    margin-bottom: 2px;
+  font-family: "Open Sans", sans-serif;
+  color: white;
+  margin-left: 10px;
+  margin-bottom: 2px;
 }
 
 .source-code {
-    font-family: 'Jost', sans-serif;
+  font-family: "Jost", sans-serif;
 }
+/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,224 @@
+@import url('https://fonts.googleapis.com/css2?family=Orienta&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@300&display=swap');
+
+$jost-font: 'Jost', sans-serif;
+$open-sans-font: 'Open Sans', sans-serif;
+$box-shadow-color-for-buttons: #53a7ea;
+
+
+html, body {
+    background: #059c57;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden;
+}
+
+.text {
+    position: absolute;
+    left: 330px;
+    top: 55px;
+    font-family: $jost-font;
+    font-size: 2rem; 
+    text-align: center;
+    color: #FFFFFF;
+}
+
+#github-icon {
+    font-size: 1.4rem;
+    margin-left: 20px;
+    margin-top: 10px;
+    transition: 0.3s;
+    color: white;
+    &:hover {
+        color: #211f1f;
+    }
+}
+
+.difficulty-div {
+    position: absolute;
+    left: 880px;
+    top: 295px;
+}
+
+.category-options {
+    position: absolute;
+    left: 335px;
+    top: 295px;
+}
+
+.difficulty-options, .categories {
+    font-family: $open-sans-font;
+}
+
+#click {
+    position: relative;
+    left: 630px;
+    top: 500px;
+    font-size: 1.25rem;
+    cursor: pointer;
+    font-family: $open-sans-font;
+    transition: .2s;
+    &:hover {
+        box-shadow: 1px 1px $box-shadow-color-for-buttons, 
+            2px 2px $box-shadow-color-for-buttons, 
+            3px 3px $box-shadow-color-for-buttons;
+        -webkit-transform: translateX(-3px);
+        transform: translateX(-3px);
+    }
+}
+
+
+#quiz-container {
+    background: white;
+    border: 1px solid grey;
+    border-radius: 10px;
+    text-align: center;
+    margin: 20px;
+    margin-top: -10px;
+    margin-left: 160px;
+    visibility: hidden;
+    width: 1000px;
+    height: auto;
+}
+
+#question-text {
+    float: center;
+    font-family: $open-sans-font;
+    font-size: 2rem;
+    margin-top: 30px;
+    max-width: 1000px;
+}
+
+#gameProgress {
+    font-size: 1.2rem;
+    font-family: $open-sans-font;
+    position: relative;
+    top: -45px;
+    left: 430px;
+}
+
+#points {
+    font-size: 1.2rem;
+    font-family: $open-sans-font;
+    margin-left: -820px;
+}
+
+#answer-buttons-div {
+    margin-top: 80px;
+    padding: 5px;
+}
+
+#answer1, #answer2, #answer3, #answer4 {
+    background: #d7d9d7;
+    font-size: 1.25rem;
+    padding: 10px;
+    border: white;
+    border-radius: 10px;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: .2s;
+}
+
+#answer1:hover, #answer2:hover, #answer3:hover, #answer4:hover {
+    box-shadow: 1px 1px $box-shadow-color-for-buttons, 
+        2px 2px $box-shadow-color-for-buttons, 
+        3px 3px $box-shadow-color-for-buttons;
+    -webkit-transform: translateX(-3px);
+    transform: translateX(-3px);
+    opacity: 1;
+}
+
+.first-two-button {
+    margin: 50px;
+}
+
+#next_question {
+    margin-left: 750px;
+    margin-bottom: 40px;
+    font-family: $open-sans-font;
+    background: greenyellow;
+    border: none;
+    font-size: 1.1rem;
+    padding: 10px;
+    cursor: pointer;
+    transition: .3s;
+    &:hover {
+        background-color: #3ea834;
+        color: white;
+    }
+}
+
+
+#endgame-div {
+    font-size: 2rem;
+    visibility: visible;
+}
+
+#player-info {
+    color: white;
+    font-family: $open-sans-font;
+    text-align: center;
+    font-size: 2rem;    
+    position: relative;
+    left: 25px;
+    top: -500px;
+    cursor: pointer;
+}
+
+#play-again-button {
+    visibility: hidden;
+    position: relative;
+    top: -350px;
+    font-family: $open-sans-font;
+    left: 630px;
+    font-size: 1.6rem;
+    cursor: pointer;
+    opacity: 0.5;
+    transition: .2s;
+    &:hover {
+        box-shadow: 1px 1px $box-shadow-color-for-buttons, 
+            2px 2px $box-shadow-color-for-buttons, 
+            3px 3px $box-shadow-color-for-buttons;
+        -webkit-transform: translateX(-3px);
+        transform: translateX(-3px);
+        opacity: 1;
+    }
+}
+
+
+#twitter-share {
+    background: #00acee;
+    color: white;
+    border: #00acee;
+    border-radius: 150px;
+    padding: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    visibility: hidden;
+    position: relative;
+    top: -510px;
+    left: 510px;
+    transition: 0.3s;
+    &:hover {
+        background: #006287;
+    }
+}
+
+.text-with-twitter-icon {
+    font-family: $open-sans-font;
+}
+
+#credit {
+    font-family: $open-sans-font;
+    color: white;
+    margin-left: 10px;
+    margin-bottom: 2px;
+}
+
+.source-code {
+    font-family: $jost-font;
+}
