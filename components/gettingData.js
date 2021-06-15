@@ -63,7 +63,7 @@ export function generateQuestion() {
             console.log(random_question);
             question_text.innerHTML = random_question.question;
 
-            /* Each question comes with 4 answer options to choose. 
+            /* Each question comes with 4 answer options to choose from the API call. 
                For now they're sorted one by one in an array but
                it will be generated randomly. */  
             let answers = [

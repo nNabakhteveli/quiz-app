@@ -1,8 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Orienta&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@300&display=swap');
+
 
 html {
-    background: #2B696D;
+    background: #059c57;
     position: relative;
     width: fit-content;
 }
@@ -18,10 +20,10 @@ html, body {
 
 .text {
     position: absolute;
-    left: 250px;
+    left: 330px;
     top: 55px;
-    font-family: 'Orienta', sans-serif;
-    font-size: 2rem;    
+    font-family: 'Jost', sans-serif;
+    font-size: 2rem; 
     text-align: center;
     color: #FFFFFF;
 }
@@ -41,18 +43,34 @@ html, body {
 
 .difficulty-div {
     position: absolute;
-    left: 820px;
+    left: 880px;
     top: 295px;
 }
 
 .category-options {
     position: absolute;
-    left: 300px;
+    left: 335px;
     top: 295px;
 }
 
 .difficulty-options, .categories {
     font-family: 'Open Sans', sans-serif;
+}
+
+#click {
+    position: relative;
+    left: 630px;
+    top: 500px;
+    font-size: 1.25rem;
+    cursor: pointer;
+    font-family: 'Open Sans', sans-serif;
+    transition: .2s;
+}
+
+#click:hover {
+    box-shadow: 1px 1px #53a7ea, 2px 2px #53a7ea, 3px 3px #53a7ea;
+    -webkit-transform: translateX(-3px);
+    transform: translateX(-3px);
 }
 
 
@@ -136,23 +154,6 @@ html, body {
 }
 
 
-#click {
-    position: relative;
-    left: 600px;
-    top: 500px;
-    font-size: 1.25rem;
-    cursor: pointer;
-    font-family: 'Open Sans', sans-serif;
-    transition: .2s;
-}
-
-
-#click:hover {
-    box-shadow: 1px 1px #53a7ea, 2px 2px #53a7ea, 3px 3px #53a7ea;
-    -webkit-transform: translateX(-3px);
-    transform: translateX(-3px);
-}
-
 #endgame-div {
     font-size: 2rem;
     visibility: visible;
@@ -217,4 +218,8 @@ html, body {
     color: white;
     margin-left: 10px;
     margin-bottom: 2px;
+}
+
+.source-code {
+    font-family: 'Jost', sans-serif;
 }
