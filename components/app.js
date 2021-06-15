@@ -1,3 +1,3 @@
-import categories from './gettingData.js';
+import getCategories from './gettingData.js';
 
-categories();
+getCategories();

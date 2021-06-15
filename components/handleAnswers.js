@@ -1,5 +1,5 @@
 import * as buttonStyling from './buttonStyle.js';
-import categories from './gettingData.js';
+import generateQuestion from './gettingData.js';
 import styleHTML from './showupQuiz.js';
 import shareOnTwitter from './shareOnTwitter.js';
 
@@ -110,5 +110,5 @@ document.getElementById('play-again-button').addEventListener('click', () => {
     playerScore = 0;
     gameProgressText.innerHTML = `${progress} / 10`;
     playerScoreText.innerHTML = `Your Points - ${playerScore}`;
-    categories();
+    generateQuestion();
 });

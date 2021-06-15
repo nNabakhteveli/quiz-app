@@ -4,7 +4,7 @@ import isRightOrNot from './handleAnswers.js';
 
 
 // Non repeating random numbers
-const secondRandomNumbers = (range, outputCount) => {
+const nonRepeatingRandomNumbers = (range, outputCount) => {
     let arr = [], result = [];
     for (let i = 0; i <= range; i++) {
         arr.push(i);
@@ -27,46 +27,45 @@ const questCategory = document.getElementById('question-category'),
 
 const buttonsArr = [button1, button2, button3, button4];
 
+
 // Fetching categories from the API to put in the <select /> tag
-export default function categories() {
-    const URL = 'https://opentdb.com/api_category.php';
-    let xhr = new XMLHttpRequest();
-    xhr.open('GET', URL, true);
-    xhr.onload = function() {
-        if(this.status == 200) {
-            const response = JSON.parse(this.responseText).trivia_categories;
-            console.log(response);
+export default function getCategories() {
+    fetch('https://opentdb.com/api_category.php')
+    .then(response => response.json())
+    .then(data => {
+        const response = data.trivia_categories;
+        console.log(response);
 
-            let options;
-            for(let i in response) {
-                options += `<option class='categories' value=${response[i].id}>${response[i].name}</option>`;
-                questCategory.value = options.value;
-            }
-            questCategory.innerHTML = options;
+        let options;
+        for(let i in response) {
+            options += `<option class='categories' value=${response[i].id}>${response[i].name}</option>`;
+            questCategory.value = options.value;
         }
-    }
-    xhr.send();
+        questCategory.innerHTML = options;
+    });
+}
 
-    
-    let generateQuestion = () => {
-        let categoryID = questCategory.value;
-        let difficulty = document.getElementById('selectDiff').value;
-        const URL = `https://opentdb.com/api.php?amount=1&category=${categoryID}&difficulty=${difficulty}&type=multiple`;
-      
-        let secondCall = new XMLHttpRequest();
-        secondCall.open('GET', URL, true);
-        
-        secondCall.onload = function() {
-            styleHTML();
-            let response = JSON.parse(this.responseText).results;
+// Fetching custom questions from the API based on user's input
+export function generateQuestion() {
+    let categoryID = questCategory.value;
+    let difficulty = document.getElementById('selectDiff').value;
 
-            let getRandomQuestion = (responseArr) => {
+    fetch(`https://opentdb.com/api.php?amount=1&category=${categoryID}&difficulty=${difficulty}&type=multiple`)
+    .then(response => response.json())
+    .then(data => {
+        styleHTML(); // Calling the imported function to show up the quiz
+        const response = data.results;
+
+        const getRandomQuestion = (responseArr) => {
             let randomNum = Math.floor(Math.random() * responseArr.length);
             let random_question = responseArr[randomNum];
 
             console.log(random_question);
             question_text.innerHTML = random_question.question;
 
+            /* Each question comes with 4 answer options to choose. 
+               For now they're sorted one by one in an array but
+               it will be generated randomly. */  
             let answers = [
                 random_question.correct_answer, 
                 random_question.incorrect_answers[0],
@@ -75,31 +74,27 @@ export default function categories() {
             ];
 
             let randomAnswers = [];
-            randomAnswers.push(secondRandomNumbers(3, 3));
+            randomAnswers.push(nonRepeatingRandomNumbers(3, 3));
             let randomAnswersNumber = randomAnswers[0];
 
-
-            for(let i = 0; i < buttonsArr.length; i++) { buttonsArr[i].textContent = answers[randomAnswersNumber[i]]; }
+            // Assigning answers to the buttons
+            for(let i = 0; i < buttonsArr.length; i++) { 
+                buttonsArr[i].textContent = answers[randomAnswersNumber[i]]; 
+            }
+            
+            // Check if user's answer is right or not
             isRightOrNot(random_question);
+            
         }
-
-        if(this.status == 200) {
-            getRandomQuestion(response);
-        }
-
-        /* After user will click on the button, button will become green if the answer is right, 
-        and red if the answer is wrong. Then, when the new question will be generated, buttons will need to
-        return to normal colors, so this functions below will handle that */
-                
+        getRandomQuestion(response);
         buttonsArr.forEach(button => styleButton.unstyleAnswer(button));
+    })
+   
+};
 
-        }
-        secondCall.send();
-    }
-    document.getElementById('click').addEventListener('click', generateQuestion);
+
+document.getElementById('click').addEventListener('click', generateQuestion);
     
-    document.getElementById('next_question').addEventListener('click', () => {
-        generateQuestion();
-    });
-}
-    
+document.getElementById('next_question').addEventListener('click', () => {
+    generateQuestion();
+});
