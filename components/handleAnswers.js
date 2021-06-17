@@ -57,6 +57,10 @@ export default function isRightOrNot(question) {
             buttonStyling.styleWrongAnswer(button1);
             console.log("Wrong answer buddy"); 
         }
+
+         if(progress >= 10) {
+            endGame();
+        }
     }
 
     button2.onclick = () => {
@@ -67,6 +71,10 @@ export default function isRightOrNot(question) {
         } else {
             buttonStyling.styleWrongAnswer(button2);
             console.log("Wrong answer buddy"); 
+        }
+
+        if(progress >= 10) {
+            endGame();
         }
     }
 
@@ -79,6 +87,10 @@ export default function isRightOrNot(question) {
             buttonStyling.styleWrongAnswer(button3);
             console.log("Wrong answer buddy"); 
         }
+
+        if(progress >= 10) {
+            endGame();
+        }
     }
 
     button4.onclick = () => {
@@ -90,12 +102,18 @@ export default function isRightOrNot(question) {
             buttonStyling.styleWrongAnswer(button4);
             console.log("Wrong answer buddy"); 
         }
+
+        if(progress >= 10) {
+            endGame();
+        }
     }
 
-    if(progress > 10) {
+    if(progress >= 10) {
         endGame();
     }
 }
+
+
 
 document.getElementById('next_question').addEventListener('click', incrementGameProgress);
 

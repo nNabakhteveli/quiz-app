@@ -152,7 +152,6 @@ html, body {
 
 #endgame-div {
   font-size: 2rem;
-  visibility: visible;
 }
 
 #player-info {
@@ -167,12 +166,12 @@ html, body {
 }
 
 #play-again-button {
-  visibility: hidden;
   position: relative;
   top: -350px;
   font-family: "Open Sans", sans-serif;
   left: 630px;
   font-size: 1.6rem;
+  visibility: hidden;
   cursor: pointer;
   opacity: 0.5;
   -webkit-transition: .2s;

@@ -87,6 +87,7 @@ export function generateQuestion() {
             
         }
         getRandomQuestion(response);
+        
         buttonsArr.forEach(button => styleButton.unstyleAnswer(button));
     })
    
