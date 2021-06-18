@@ -1,7 +1,8 @@
 import * as styleButton from './buttonStyle.js';
-import styleHTML from './showupQuiz.js';
+import showupQuizContainer from './showupQuiz.js';
 import isRightOrNot from './handleAnswers.js';
 
+getCategories();
 
 // Non repeating random numbers
 const nonRepeatingRandomNumbers = (range, outputCount) => {
@@ -27,16 +28,14 @@ const questCategory = document.getElementById('question-category'),
 
 const buttonsArr = [button1, button2, button3, button4];
 
-
 // Fetching categories from the API to put in the <select /> tag
 export default function getCategories() {
     fetch('https://opentdb.com/api_category.php')
     .then(response => response.json())
     .then(data => {
         const response = data.trivia_categories;
-        console.log(response);
-
         let options;
+    
         for(let i in response) {
             options += `<option class='categories' value=${response[i].id}>${response[i].name}</option>`;
             questCategory.value = options.value;
@@ -53,12 +52,11 @@ export function generateQuestion() {
     fetch(`https://opentdb.com/api.php?amount=1&category=${categoryID}&difficulty=${difficulty}&type=multiple`)
     .then(response => response.json())
     .then(data => {
-        styleHTML(); // Calling the imported function to show up the quiz
+        showupQuizContainer();
         const response = data.results;
 
         const getRandomQuestion = (responseArr) => {
-            let randomNum = Math.floor(Math.random() * responseArr.length);
-            let random_question = responseArr[randomNum];
+            let random_question = responseArr[Math.floor(Math.random() * responseArr.length)];
 
             console.log(random_question);
             question_text.innerHTML = random_question.question;
@@ -70,10 +68,9 @@ export function generateQuestion() {
                 random_question.correct_answer, 
                 random_question.incorrect_answers[0],
                 random_question.incorrect_answers[1],
-                random_question.incorrect_answers[2]
-            ];
+                random_question.incorrect_answers[2] ], randomAnswers = [];
 
-            let randomAnswers = [];
+
             randomAnswers.push(nonRepeatingRandomNumbers(3, 3));
             let randomAnswersNumber = randomAnswers[0];
 
@@ -81,21 +78,14 @@ export function generateQuestion() {
             for(let i = 0; i < buttonsArr.length; i++) { 
                 buttonsArr[i].textContent = answers[randomAnswersNumber[i]]; 
             }
-            
-            // Check if user's answer is right or not
+
             isRightOrNot(random_question);
-            
         }
-        getRandomQuestion(response);
-        
+        getRandomQuestion(response);  
         buttonsArr.forEach(button => styleButton.unstyleAnswer(button));
     })
-   
 };
 
 
 document.getElementById('click').addEventListener('click', generateQuestion);
-    
-document.getElementById('next_question').addEventListener('click', () => {
-    generateQuestion();
-});
+document.getElementById('next_question').addEventListener('click', generateQuestion);

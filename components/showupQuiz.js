@@ -3,7 +3,7 @@ const quiz_container = document.getElementById('quiz-container'),
     question_text = document.getElementById('question-text');
 
 
-export default function styleHTML() {
+export default function showupQuizContainer() {
     // Make quiz appear
     quiz_container.style.visibility = 'visible';
     question_text.style.visibility = 'visible';

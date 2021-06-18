@@ -1,13 +1,15 @@
 import * as buttonStyling from './buttonStyle.js';
 import generateQuestion from './gettingData.js';
-import styleHTML from './showupQuiz.js';
+import showupQuizContainer from './showupQuiz.js';
 import shareOnTwitter from './shareOnTwitter.js';
 
 const button1 = document.getElementById('answer1'),
     button2 = document.getElementById('answer2'),
     button3 = document.getElementById('answer3'),
     button4 = document.getElementById('answer4'),
-    twitterShare = document.getElementById('twitter-share');
+    twitterShare = document.getElementById('twitter-share'),
+    quiz_container = document.getElementById('quiz-container'), 
+    question_text = document.getElementById('question-text');
 
 
 // Game info - progress and score
@@ -15,9 +17,9 @@ let progress = 1, playerScore = 0;
 
 
 let gameProgressText = document.getElementById('gameProgress');
-gameProgressText.innerHTML = `${progress} / 10`;
-
 let playerScoreText = document.getElementById('points');
+
+gameProgressText.innerHTML = `${progress} / 10`;
 playerScoreText.innerHTML = `Your Points - ${playerScore}`;
 
 
@@ -30,10 +32,6 @@ function incrementPlayerScore() {
     playerScore += 10;
     playerScoreText.innerHTML = `Your Points - ${playerScore}`;
 }
-
-
-const quiz_container = document.getElementById('quiz-container'), 
-    question_text = document.getElementById('question-text');
 
  
 function endGame() { 
@@ -114,7 +112,6 @@ export default function isRightOrNot(question) {
 }
 
 
-
 document.getElementById('next_question').addEventListener('click', incrementGameProgress);
 
 twitterShare.addEventListener('click', () => {
@@ -123,7 +120,7 @@ twitterShare.addEventListener('click', () => {
 
 // Game reset button
 document.getElementById('play-again-button').addEventListener('click', () => {
-    styleHTML();
+    showupQuizContainer();
     progress = 1;
     playerScore = 0;
     gameProgressText.innerHTML = `${progress} / 10`;

@@ -1,35 +1,24 @@
-const button1 = document.getElementById('answer1'),
-      button2 = document.getElementById('answer2'),
-      button3 = document.getElementById('answer3'),
-      button4 = document.getElementById('answer4');
 
-
-const buttonsArr = [button1, button2, button3, button4];
+const buttonsArr = [
+    document.getElementById('answer1'),
+    document.getElementById('answer2'),
+    document.getElementById('answer3'),
+    document.getElementById('answer4')
+];
 
 for(let i = 0; i < buttonsArr.length; i++) {
     buttonsArr[i].onmouseover = () => {
         buttonsArr[i].style.opacity = '1'; 
     }
-}
 
-for(let i = 0; i < buttonsArr.length; i++) {
     buttonsArr[i].onmouseleave = () => {
         buttonsArr[i].style.opacity = '0.6'; 
     }
 }
 
+const enableButtons = () => buttonsArr.forEach(button => button.disabled = false);
+const disableButtons = () => buttonsArr.forEach(button => button.disabled = true);
 
-function disableButtons() {
-    for(let i = 0; i < buttonsArr.length; i++) {
-        buttonsArr[i].disabled = true;
-    }
-}
-
-function enableButtons() {
-    for(let i = 0; i < buttonsArr.length; i++) {
-        buttonsArr[i].disabled = false;
-    }
-}
 
 function fullOpacity(button) {
     button.style.opacity = '1';
