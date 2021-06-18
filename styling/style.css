@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Orienta&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Jost:wght@300&display=swap");
+@import url("./responsive.css");
 html, body {
   background: #059c57;
   position: relative;
@@ -81,12 +82,26 @@ html, body {
   height: auto;
 }
 
+@-webkit-keyframes animation {
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes animation {
+  100% {
+    opacity: 1;
+  }
+}
+
 #question-text {
   float: center;
   font-family: "Open Sans", sans-serif;
   font-size: 2rem;
   margin-top: 30px;
   max-width: 1000px;
+  -webkit-animation: animation 1s ease-out;
+          animation: animation 1s ease-out;
 }
 
 #gameProgress {
@@ -118,6 +133,9 @@ html, body {
   opacity: 0.6;
   -webkit-transition: .2s;
   transition: .2s;
+  opacity: 0;
+  -webkit-animation: animation 1s ease-out;
+          animation: animation 1s ease-out;
 }
 
 #answer1:hover, #answer2:hover, #answer3:hover, #answer4:hover {
@@ -219,5 +237,9 @@ html, body {
 
 .source-code {
   font-family: "Jost", sans-serif;
+}
+
+.first-option {
+  font-size: 25rem;
 }
 /*# sourceMappingURL=style.css.map */
